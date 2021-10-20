@@ -14,6 +14,13 @@ class UbloxReceiverView : public QWidget
 public:
     UbloxReceiverView(QWidget *parent = nullptr);
     ~UbloxReceiverView();
+    enum class ReceiverStatus { ACTIVE, INACTIVE, STARTING, NOT_DETECTED };
+    void setReceiverStatus(ReceiverStatus status);
+
+signals:
+    void coldStartClicked();
+    void warmStartClicked();
+    void hotStartClicked();
 
 private:
     Ui::UbloxReceiverView *ui;

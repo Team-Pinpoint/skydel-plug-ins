@@ -10,9 +10,102 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <weight>50</weight>
+    <bold>false</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>UbloxReceiverView</string>
   </property>
+  <property name="toolTip">
+   <string>Hot Start</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>361</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="receiverLabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>U-Blox Receiver Status:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="receiverStatusLabel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>0</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Not Detected</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="coldStartButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>0</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Cold Start</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: blue</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="warmStartButton">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Warm Start</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: orange</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hotStartButton">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>0</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Hot Start</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: red</string>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>
