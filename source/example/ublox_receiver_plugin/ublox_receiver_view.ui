@@ -19,9 +19,6 @@
   <property name="windowTitle">
    <string>UbloxReceiverView</string>
   </property>
-  <property name="toolTip">
-   <string>Hot Start</string>
-  </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
