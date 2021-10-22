@@ -1,51 +1,65 @@
 #include "ublox_receiver_view.h"
+
 #include "ui_ublox_receiver_view.h"
 
-UbloxReceiverView::UbloxReceiverView(QWidget *parent) : QWidget(parent), ui(new Ui::UbloxReceiverView)
+UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new Ui::UbloxReceiverView)
 {
-    ui->setupUi(this);
+  ui->setupUi(this);
 
-    setReceiverStatus(ReceiverStatus::INACTIVE);
+  setReceiverStatus(ReceiverStatus::INACTIVE);
 
-    connect(ui->coldStartButton, &QPushButton::clicked, this, &UbloxReceiverView::coldStartClicked);
-    connect(ui->warmStartButton, &QPushButton::clicked, this, &UbloxReceiverView::warmStartClicked);
-    connect(ui->hotStartButton, &QPushButton::clicked, this, &UbloxReceiverView::hotStartClicked);
+  connect(ui->startButton, &QPushButton::clicked, [this] {
+    ui->startButton->setEnabled(false);
+    ui->startTypeSelect->setCurrentIndex(0);
+    emit startClicked(this->selectedStartType);
+  });
+
+  connect(ui->startTypeSelect, qOverload<int>(&QComboBox::currentIndexChanged), [this](int index) {
+    this->selectedStartType = (ReceiverStartType)index;
+    if (index == 0)
+    {
+      ui->startButton->setEnabled(false);
+    }
+    else if (receiverStatus == ReceiverStatus::ACTIVE || receiverStatus == ReceiverStatus::INACTIVE)
+    {
+      ui->startButton->setEnabled(true);
+    }
+  });
 }
 
-UbloxReceiverView::~UbloxReceiverView() { delete ui; }
+UbloxReceiverView::~UbloxReceiverView()
+{
+  delete ui;
+}
 
 void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
 {
-    switch(status) {
-        case ReceiverStatus::NOT_DETECTED :
-            ui->receiverStatusLabel->setText("Not Detected");
-            ui->receiverStatusLabel->setStyleSheet("QLabel {color : black; }");
-            ui->coldStartButton->setDisabled(true);
-            ui->warmStartButton->setDisabled(true);
-            ui->hotStartButton->setDisabled(true);
-            break;
-        case ReceiverStatus::STARTING :
-            ui->receiverStatusLabel->setText("Starting");
-            ui->receiverStatusLabel->setStyleSheet("QLabel {color : olive; }");
-            ui->coldStartButton->setDisabled(true);
-            ui->warmStartButton->setDisabled(true);
-            ui->hotStartButton->setDisabled(true);
-            break;
-        case ReceiverStatus::INACTIVE :
-            ui->receiverStatusLabel->setText("Inactive");
-            ui->receiverStatusLabel->setStyleSheet("QLabel {color : red; }");
-            ui->coldStartButton->setDisabled(false);
-            ui->warmStartButton->setDisabled(false);
-            ui->hotStartButton->setDisabled(false);
-            break;
-        case ReceiverStatus::ACTIVE :
-            ui->receiverStatusLabel->setText("Active");
-            ui->receiverStatusLabel->setStyleSheet("QLabel {color : green; }");
-            ui->coldStartButton->setDisabled(false);
-            ui->warmStartButton->setDisabled(false);
-            ui->hotStartButton->setDisabled(false);
-            break;
-        default :
-            break;
-    }
+  this->receiverStatus = status;
+  switch (status)
+  {
+    case ReceiverStatus::NOT_DETECTED:
+      ui->receiverStatusLabel->setText("[Not Detected]");
+      ui->startButton->setDisabled(true);
+      break;
+    case ReceiverStatus::STARTING:
+      ui->receiverStatusLabel->setText("[Starting]");
+      ui->startButton->setDisabled(true);
+      break;
+    case ReceiverStatus::INACTIVE:
+      ui->receiverStatusLabel->setText("[Inactive]");
+      if (this->selectedStartType != ReceiverStartType::NONE)
+      {
+        ui->startButton->setDisabled(false);
+      }
+      break;
+    case ReceiverStatus::ACTIVE:
+      ui->receiverStatusLabel->setText("[Active]");
+      if (this->selectedStartType != ReceiverStartType::NONE)
+      {
+        ui->startButton->setDisabled(false);
+      }
+      break;
+    default:
+      break;
+  }
 }
