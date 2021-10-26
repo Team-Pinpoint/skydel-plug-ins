@@ -6,11 +6,10 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
 {
   ui->setupUi(this);
 
-  setReceiverStatus(ReceiverStatus::INACTIVE);
+  setReceiverStatus(ReceiverStatus::NOT_DETECTED);
 
   connect(ui->startButton, &QPushButton::clicked, [this] {
     ui->startButton->setEnabled(false);
-    ui->startTypeSelect->setCurrentIndex(0);
     emit startClicked(this->selectedStartType);
   });
 
