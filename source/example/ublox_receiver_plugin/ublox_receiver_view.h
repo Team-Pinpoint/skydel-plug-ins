@@ -2,6 +2,7 @@
 #define UBLOXRECEIVERVIEW_H
 
 #include <QWidget>
+#include "start_receiver_view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -17,29 +18,9 @@ class UbloxReceiverView : public QWidget
 public:
   UbloxReceiverView(QWidget* parent = nullptr);
   ~UbloxReceiverView();
-  enum class ReceiverStatus
-  {
-    ACTIVE,
-    INACTIVE,
-    STARTING,
-    NOT_DETECTED
-  };
-  enum class ReceiverStartType
-  {
-    NONE = 0,
-    COLD = 1,
-    WARM = 2,
-    HOT = 3
-  };
-
-  void setReceiverStatus(ReceiverStatus status);
-
-signals:
-  void startClicked(ReceiverStartType startType);
+  StartReceiverView *startReceiverView;
 
 private:
   Ui::UbloxReceiverView* ui;
-  ReceiverStatus receiverStatus;
-  ReceiverStartType selectedStartType;
 };
 #endif // UBLOXRECEIVERVIEW_H

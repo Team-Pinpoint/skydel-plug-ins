@@ -15,9 +15,10 @@ QJsonObject UbloxReceiverPlugin::getConfiguration() const
 QWidget* UbloxReceiverPlugin::createUI()
 {
   auto view = new UbloxReceiverView;
+  auto startReceiverView = view->startReceiverView;
 
-  connect(view, &UbloxReceiverView::startClicked, [view](UbloxReceiverView::ReceiverStartType startType) {
-    view->setReceiverStatus(UbloxReceiverView::ReceiverStatus::STARTING);
+  connect(startReceiverView, &StartReceiverView::startClicked, [startReceiverView](StartReceiverView::ReceiverStartType startType) {
+    startReceiverView->setReceiverStatus(StartReceiverView::ReceiverStatus::STARTING);
   });
 
   return view;
