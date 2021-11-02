@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "start_receiver_view.h"
-#include "configure_receiver_view.h"
+#include "connect_receiver_view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -20,7 +20,7 @@ public:
   UbloxReceiverView(QWidget* parent = nullptr);
   ~UbloxReceiverView();
   StartReceiverView *startReceiverView;
-  ConfigureReceiverView *configureReceiverView;
+  ConnectReceiverView *connectReceiverView;
 
 private:
   Ui::UbloxReceiverView* ui;

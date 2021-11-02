@@ -23,7 +23,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="configureReceiverButton">
+  <widget class="QPushButton" name="connectReceiverButton">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -33,10 +33,10 @@
     </rect>
    </property>
    <property name="toolTip">
-    <string>Configure Receiver</string>
+    <string>Connect Receiver</string>
    </property>
    <property name="text">
-    <string>Configure</string>
+    <string>Connect</string>
    </property>
   </widget>
  </widget>
