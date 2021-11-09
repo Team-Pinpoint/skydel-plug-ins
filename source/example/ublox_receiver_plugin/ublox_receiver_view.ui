@@ -13,7 +13,25 @@
   <property name="windowTitle">
    <string>UbloxReceiverView</string>
   </property>
+  <widget class="StartReceiverView" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>501</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>StartReceiverView</class>
+   <extends>QWidget</extends>
+   <header location="global">start_receiver_view.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
