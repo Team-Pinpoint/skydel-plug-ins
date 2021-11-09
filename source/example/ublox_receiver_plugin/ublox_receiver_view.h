@@ -2,8 +2,9 @@
 #define UBLOXRECEIVERVIEW_H
 
 #include <QWidget>
-#include "start_receiver_view.h"
+
 #include "connect_receiver_view.h"
+#include "start_receiver_view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -19,8 +20,8 @@ class UbloxReceiverView : public QWidget
 public:
   UbloxReceiverView(QWidget* parent = nullptr);
   ~UbloxReceiverView();
-  StartReceiverView *startReceiverView;
-  ConnectReceiverView *connectReceiverView;
+  StartReceiverView* startReceiverView;
+  ConnectReceiverView* connectReceiverView;
 
 private:
   Ui::UbloxReceiverView* ui;

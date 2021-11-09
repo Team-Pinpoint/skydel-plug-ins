@@ -3,7 +3,8 @@
 
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class StartReceiverView;
 }
 
@@ -12,7 +13,7 @@ class StartReceiverView : public QWidget
   Q_OBJECT
 
 public:
-  explicit StartReceiverView(QWidget *parent = nullptr);
+  explicit StartReceiverView(QWidget* parent = nullptr);
   ~StartReceiverView();
   enum class ReceiverStatus
   {
@@ -34,7 +35,7 @@ signals:
   void startClicked(ReceiverStartType startType);
 
 private:
-  Ui::StartReceiverView *ui;
+  Ui::StartReceiverView* ui;
   ReceiverStatus receiverStatus;
   ReceiverStartType selectedStartType;
 };

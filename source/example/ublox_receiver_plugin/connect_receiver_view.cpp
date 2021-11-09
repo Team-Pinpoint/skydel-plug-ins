@@ -1,9 +1,8 @@
 #include "connect_receiver_view.h"
+
 #include "ui_connect_receiver_view.h"
 
-ConnectReceiverView::ConnectReceiverView(QWidget *parent) :
-  QWidget(parent),
-  ui(new Ui::ConnectReceiverView)
+ConnectReceiverView::ConnectReceiverView(QWidget* parent) : QWidget(parent), ui(new Ui::ConnectReceiverView)
 {
   ui->setupUi(this);
 
@@ -12,9 +11,7 @@ ConnectReceiverView::ConnectReceiverView(QWidget *parent) :
     this->hide();
   });
 
-  connect(ui->connectReceiverDialogButtons, &QDialogButtonBox::rejected, [this] {
-    this->hide();
-  });
+  connect(ui->connectReceiverDialogButtons, &QDialogButtonBox::rejected, [this] { this->hide(); });
 }
 
 ConnectReceiverView::~ConnectReceiverView()

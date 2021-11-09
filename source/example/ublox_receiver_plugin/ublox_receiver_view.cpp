@@ -11,6 +11,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
 
   connect(ui->connectReceiverButton, &QPushButton::clicked, [this] {
     this->connectReceiverView->show();
+    this->connectReceiverView->move(this->geometry().width(), this->geometry().height());
   });
 }
 

@@ -3,7 +3,8 @@
 
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class ConnectReceiverView;
 }
 
@@ -12,14 +13,14 @@ class ConnectReceiverView : public QWidget
   Q_OBJECT
 
 public:
-  explicit ConnectReceiverView(QWidget *parent = nullptr);
+  explicit ConnectReceiverView(QWidget* parent = nullptr);
   ~ConnectReceiverView();
 
 signals:
   void connectReceiver();
 
 private:
-  Ui::ConnectReceiverView *ui;
+  Ui::ConnectReceiverView* ui;
 };
 
 #endif // CONNECT_RECEIVER_VIEW_H

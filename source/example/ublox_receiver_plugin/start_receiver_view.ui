@@ -6,85 +6,63 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>505</width>
-    <height>24</height>
+    <width>519</width>
+    <height>43</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="receiverLabel">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>161</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>U-Blox Receiver Status:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="receiverStatusLabel">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>0</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>[Not Detected]</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="startTypeSelect">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>0</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Select Start Type</string>
-    </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="receiverLabel">
+     <property name="text">
+      <string>U-Blox Receiver Status:</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>Cold</string>
-    </property>
+   <item row="0" column="1">
+    <widget class="QLabel" name="receiverStatusLabel">
+     <property name="text">
+      <string>[Not Detected]</string>
+     </property>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>Warm</string>
-    </property>
+   <item row="0" column="2">
+    <widget class="QComboBox" name="startTypeSelect">
+     <item>
+      <property name="text">
+       <string>Select Start Type</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Cold</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Warm</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Hot</string>
+      </property>
+     </item>
+    </widget>
    </item>
-   <item>
-    <property name="text">
-     <string>Hot</string>
-    </property>
+   <item row="0" column="3">
+    <widget class="QPushButton" name="startButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+    </widget>
    </item>
-  </widget>
-  <widget class="QPushButton" name="startButton">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>0</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Start</string>
-   </property>
-  </widget>
+  </layout>
  </widget>
  <resources/>
  <connections/>
