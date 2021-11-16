@@ -13,14 +13,30 @@
   <property name="windowTitle">
    <string>UbloxReceiverView</string>
   </property>
-  <widget class="StartReceiverView" name="widget" native="true">
+  <widget class="StartReceiverView" name="startReceiverWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>0</y>
+     <width>519</width>
+     <height>43</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connectReceiverButton">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>501</width>
+     <width>81</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>Connect Receiver</string>
+   </property>
+   <property name="text">
+    <string>Connect</string>
    </property>
   </widget>
  </widget>

@@ -1,7 +1,8 @@
 #include "start_receiver_view.h"
+
 #include "ui_start_receiver_view.h"
 
-StartReceiverView::StartReceiverView(QWidget *parent) : QWidget(parent), ui(new Ui::StartReceiverView)
+StartReceiverView::StartReceiverView(QWidget* parent) : QWidget(parent), ui(new Ui::StartReceiverView)
 {
   ui->setupUi(this);
 
@@ -13,7 +14,7 @@ StartReceiverView::StartReceiverView(QWidget *parent) : QWidget(parent), ui(new 
   });
 
   connect(ui->startTypeSelect, qOverload<int>(&QComboBox::currentIndexChanged), [this](int index) {
-    this->selectedStartType = (ReceiverStartType) index;
+    this->selectedStartType = (ReceiverStartType)index;
     if (index == 0)
     {
       ui->startButton->setEnabled(false);
@@ -61,4 +62,3 @@ void StartReceiverView::setReceiverStatus(ReceiverStatus status)
       break;
   }
 }
-
