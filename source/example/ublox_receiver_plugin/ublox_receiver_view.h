@@ -4,6 +4,7 @@
 #include <QWidget>
 
 #include "connect_receiver_view.h"
+#include "constellation_selection_view.h"
 #include "start_receiver_view.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,7 @@ public:
   ~UbloxReceiverView();
   StartReceiverView* startReceiverView;
   ConnectReceiverView* connectReceiverView;
+  ConstellationSelectionView* constellationSelectionView;
 
 private:
   Ui::UbloxReceiverView* ui;

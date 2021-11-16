@@ -8,6 +8,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
 
   this->startReceiverView = new StartReceiverView();
   this->connectReceiverView = new ConnectReceiverView();
+  this->constellationSelectionView = new ConstellationSelectionView();
 
   connect(ui->connectReceiverButton, &QPushButton::clicked, [this] {
     this->connectReceiverView->show();
