@@ -1,8 +1,8 @@
 #ifndef UBLOX_RECEIVER_PLUGIN_H
 #define UBLOX_RECEIVER_PLUGIN_H
 
-#include "skydel_core_interface.h"
-#include "skydel_plugin.h"
+#include "skydel_plug_ins/skydel_core_interface.h"
+#include "skydel_plug_ins/skydel_plugin.h"
 
 // Plugin implementation
 class UbloxReceiverPlugin : public QObject, public SkydelCoreInterface

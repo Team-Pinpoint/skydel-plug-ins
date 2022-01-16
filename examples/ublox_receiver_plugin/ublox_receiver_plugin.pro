@@ -21,3 +21,5 @@ FORMS += \
 
 DISTFILES += \
     ublox_receiver_plugin.json
+
+LIBS += $$SKYDEL_RAPI
