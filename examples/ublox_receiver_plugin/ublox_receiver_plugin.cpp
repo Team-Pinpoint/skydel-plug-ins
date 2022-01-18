@@ -29,17 +29,11 @@ QWidget* UbloxReceiverPlugin::createUI()
             startReceiverView->setReceiverStatus(StartReceiverView::ReceiverStatus::STARTING);
           });
 
+
   Ublox my_gps;
 
-  if(argc < 3) {
-      std::cerr << "Usage: ublox_example <serial port address> <baud rate>" << std::endl;
-      return 0;
-  }
-  std::string port = "/dev/tty0MC";
-  int baudrate=115200;
-
   // Connect to Receiver
-  bool result = my_gps.Connect(port,baudrate);
+  bool result = my_gps.Connect("/dev/ttyACM0", 9600);
 
   // request position message
   my_gps.ConfigureMessageRate(0x01,0x03,1);

@@ -1,5 +1,5 @@
-#include "ublox_commands/command.h"
-#include "ublox/ublox.h"
+#include "command.h"
+#include "ublox.h"
 #include <iostream>
 
 class CreateUbloxReceiverCommand: public Command{

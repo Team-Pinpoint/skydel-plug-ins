@@ -1,4 +1,4 @@
-#include "ublox_commands/createReceiverCommand.h"
+#include "createRecieverCommand.h"
 #include <iostream>
 
 ublox::Ublox& CreateUbloxReceiverCommand::execute(){

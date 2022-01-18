@@ -1,6 +1,7 @@
 #ifndef Command_H
 #define Command_H
-#include "ublox/ublox.h"
+#include "ublox.h"
+
 class Command{
     public: 
         Command(ublox::Ublox *recv = 0) {

@@ -3,7 +3,7 @@
 #include "ros/ros.h"
 #include "sensor_msgs/NavSatFix.h"
 
-#include "ublox/ublox.h"
+#include "ublox.h"
 
 using std::string;
 

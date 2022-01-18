@@ -1,4 +1,4 @@
-#include "ublox_commands/startCommands.h"
+#include "startCommands.h"
 #include <iostream>
 
 bool ReceiverResetCommand::receiver_reset = false;
