@@ -3,6 +3,7 @@
 
 ublox::Ublox& CreateUbloxReceiverCommand::execute(){
     std::cout << baudrate << std::endl;
+    // TODO: sit and wait for a port with a ublox receiver in it
 
     bool result = (receiver->Connect)(port,baudrate);
     if (result) {

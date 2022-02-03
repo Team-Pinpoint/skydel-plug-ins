@@ -10,7 +10,7 @@
  *
  * Copyright (c) 2012 William Woodall, John Harrison
  *
- * Permission is hereby granted, free of charge, to any person obtaining a 
+ * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -24,8 +24,8 @@
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  *
  * \section DESCRIPTION
@@ -34,8 +34,11 @@
  *
  */
 
-// TODO: does not compile at all with ubuntu, fix and uncomment
+
+// TODO: uncomment if windows works, delete otherwise
 /*
+
+#if defined(_WIN32)
 
 #ifndef SERIAL_IMPL_WINDOWS_H
 #define SERIAL_IMPL_WINDOWS_H
@@ -47,9 +50,10 @@
 namespace serial {
 
 using std::string;
+using std::wstring;s
 using std::invalid_argument;
 
-using serial::SerialExecption;
+using serial::SerialException;
 using serial::IOException;
 
 class serial::Serial::SerialImpl {
@@ -74,6 +78,12 @@ public:
 
   size_t
   available ();
+  
+  bool
+  waitReadable (uint32_t timeout);
+
+  void
+  waitByteTimes (size_t count);
 
   size_t
   read (uint8_t *buf, size_t size = 1);
@@ -175,7 +185,7 @@ protected:
   void reconfigurePort ();
 
 private:
-  string port_;               // Path to the file descriptor
+  wstring port_;               // Path to the file descriptor
   HANDLE fd_;
 
   bool is_open_;
@@ -197,4 +207,6 @@ private:
 }
 
 #endif // SERIAL_IMPL_WINDOWS_H
+
+#endif // if defined(_WIN32)
 */

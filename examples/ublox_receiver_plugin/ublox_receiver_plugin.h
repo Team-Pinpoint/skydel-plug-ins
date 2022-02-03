@@ -4,6 +4,12 @@
 #include "skydel_plug_ins/skydel_core_interface.h"
 #include "skydel_plug_ins/skydel_plugin.h"
 
+#include "ublox_receiver_view.h"
+
+#include "ublox.h"
+
+using namespace ublox;
+
 // Plugin implementation
 class UbloxReceiverPlugin : public QObject, public SkydelCoreInterface
 {
@@ -23,6 +29,8 @@ signals:
 
 private:
   SkydelNotifierInterface* m_skydelNotifier;
+  UbloxReceiverView* view;
+  Ublox ublox_receiver;
 };
 
 // Required boilerplate

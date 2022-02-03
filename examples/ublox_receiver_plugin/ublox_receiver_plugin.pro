@@ -15,7 +15,8 @@ SOURCES += \
     backend/src/*.cpp \
     backend/src/*.cc \
     backend/src/commands/*.cpp \
-    backend/src/impl/*.cc
+    backend/src/impl/*.cc \
+    backend/src/impl/list_ports/*.cc
 
 HEADERS += \
     connect_receiver_view.h \
