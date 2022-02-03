@@ -418,6 +418,7 @@ void Ublox::StartReading() {
 
 void Ublox::StopReading() {
     reading_status_ = false;
+	pthread_cancel(read_thread_ptr_->native_handle());
 }
 
 void Ublox::ReadSerialPort() {

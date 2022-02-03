@@ -1,6 +1,8 @@
 /* Copyright 2012 William Woodall and John Harrison */
 
-#include "serial/impl/win.h"
+// TODO: does not compile at all with ubuntu, fix and uncomment
+/*
+#include "impl/win.h"
 
 using std::string;
 using std::stringstream;
@@ -571,3 +573,4 @@ Serial::SerialImpl::writeUnlock()
     THROW (IOException, "Error releasing write mutex.");
   }
 }
+*/
