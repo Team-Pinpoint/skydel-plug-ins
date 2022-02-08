@@ -4,12 +4,12 @@
 #include "startCommands.h"
 #include "ublox.h"
 #include "ublox_receiver_view.h"
+#include "receiver_enums.h"
 
 using namespace ublox;
 
 void UbloxReceiverPlugin::setConfiguration(const QString& version, const QJsonObject& configuration)
 {
-  m_skydelNotifier->notify("UBLOX PLUGIN BUILT");
   emit configurationChanged();
 }
 
@@ -20,46 +20,56 @@ QJsonObject UbloxReceiverPlugin::getConfiguration() const
 
 QWidget* UbloxReceiverPlugin::createUI()
 {
-  auto view = new UbloxReceiverView;
-  auto startReceiverView = view->startReceiverView;
-  auto connectReceiverView = view->connectReceiverView;
+  this->view = new UbloxReceiverView;
 
-  connect(startReceiverView,
-          &StartReceiverView::startClicked,
-          [startReceiverView](StartReceiverView::ReceiverStartType startType) {
-            startReceiverView->setReceiverStatus(StartReceiverView::ReceiverStatus::STARTING);
-          });
-
-  connect(connectReceiverView,
+  connect(view->connectReceiverView,
           &ConnectReceiverView::connectReceiver, [this]() {
-            bool result = this->ublox_receiver.Connect("/dev/ttyACM0", 9600);
-            m_skydelNotifier->notify("UBLOX CONNECTION WAS: ");
-            m_skydelNotifier->notify(result ? "true" : "false");
-            this->ublox_receiver.Disconnect();
-            m_skydelNotifier->notify("UBLOX DISCONNECTED");
-            // TODO: find a way to do this and uncomment
-            //this->view->startReceiverView->setReceiverStatus(StartReceiverView::ReceiverStatus::INACTIVE);
+            // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find port
+            bool result = ublox_receiver.Connect("/dev/ttyACM0", 9600);
+            if (result)
+            {
+              m_skydelNotifier->notify("Successfully connected to the Ublox receiver");
+              view->startReceiverView->setReceiverStatus(ReceiverStatus::INACTIVE);
+            }
+            else
+            {
+              m_skydelNotifier->notify("Failed to connect to the Ublox receiver");
+            }
           });
 
-  /*
-  Ublox my_gps;
-  // Connect to Receiver
-  bool result = my_gps.Connect("/dev/ttyACM0", 9600);
+  connect(view->startReceiverView,
+          &StartReceiverView::startClicked, [this](ReceiverStartType startType) {
+            switch (startType)
+            {
+              case ReceiverStartType::COLD:
+              {
+                m_skydelNotifier->notify("Cold starting the Ublox receiver");
+                ReceiverColdStartCommand command(&ublox_receiver);
+                command.execute();
+                break;
+              }
+              case ReceiverStartType::WARM:
+              {
+                m_skydelNotifier->notify("Warm starting the Ublox receiver");
+                ReceiverWarmStartCommand command(&ublox_receiver);
+                command.execute();
+                break;
+              }
+              case ReceiverStartType::HOT:
+              {
+                m_skydelNotifier->notify("Hot starting the Ublox receiver");
+                ReceiverHotStartCommand command(&ublox_receiver);
+                command.execute();
+                break;
+              }
+              default:
+                break;
+            }
+            view->startReceiverView->setReceiverStatus(ReceiverStatus::STARTING);
+            // TODO: skydel is freezing up and needs a force quit after calling command.execute()
+          });
 
-  m_skydelNotifier->notify("UBLOX CONNECTION WAS: ");
-  m_skydelNotifier->notify(result ? "true" : "false");
-  // request position message
-  my_gps.ConfigureMessageRate(0x01,0x03,1);
-
-  m_skydelNotifier->notify("WE CONFIGD THE MSG RATE");
-
-
-  ReceiverColdStartCommand coldstartcmd(&my_gps);
-  coldstartcmd.execute();
-  my_gps.Disconnect();
-  m_skydelNotifier->notify("UBLOX DISCONNECTED");
-  */
-
+  // TODO: Should we have the plugin call ublox_receiver.Disconnect(); when everything is destroyed?
 
   return view;
 }

@@ -5,6 +5,7 @@
 #include "skydel_plug_ins/skydel_plugin.h"
 
 #include "ublox_receiver_view.h"
+#include "receiver_enums.h"
 
 #include "ublox.h"
 
