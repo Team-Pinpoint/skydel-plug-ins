@@ -1,11 +1,12 @@
 #include "command.h"
 #include "ublox.h"
+#include "receiver_enums.h"
 #include <iostream>
 
-class ReceiverResetCommand: public Command{
+class ReceiverStartCommand: public Command{
     public:
-        ReceiverResetCommand(ublox::Ublox *recv = 0): Command(recv){};
-        ~ReceiverResetCommand(){};
+        ReceiverStartCommand(ublox::Ublox *recv = 0): Command(recv){};
+        ~ReceiverStartCommand(){};
         static void NavigationStatusCallback(ublox::NavStatus &nav_status, double &time_stamp){
             try{
                 std::cout << "GPS Fix Type: "<< std::endl;
@@ -20,7 +21,7 @@ class ReceiverResetCommand: public Command{
                     std::cout << "2D Fix" << std::endl;
                 } else if (nav_status.fixtype == 0x03) {
                     std::cout << "3D Fix" << std::endl;
-                    ReceiverResetCommand::receiver_reset = true;
+                    ReceiverStartCommand::receiver_reset = true;
                 } else if (nav_status.fixtype == 0x04) {
                     std::cout << "GPS + Dead Reckoning" << std::endl;
                 } else if (nav_status.fixtype == 0x05) {
@@ -39,25 +40,7 @@ class ReceiverResetCommand: public Command{
                 std::cout << "PseudorangeData() error";
             }    
         }
+        void execute(ReceiverStartType startType);
     protected:
         static bool receiver_reset;
-};
-
-class ReceiverColdStartCommand: public ReceiverResetCommand{
-    public: 
-        ReceiverColdStartCommand(ublox::Ublox *recv = 0): ReceiverResetCommand(recv){};
-        ~ReceiverColdStartCommand();
-        void execute();
-};
-class ReceiverWarmStartCommand: public ReceiverResetCommand{
-    public: 
-        ReceiverWarmStartCommand(ublox::Ublox *recv = 0): ReceiverResetCommand(recv){};
-        ~ReceiverWarmStartCommand();
-        void execute();
-};
-class ReceiverHotStartCommand: public ReceiverResetCommand{
-    public: 
-        ReceiverHotStartCommand(ublox::Ublox *recv = 0): ReceiverResetCommand(recv){};
-        ~ReceiverHotStartCommand();
-        void execute();
 };

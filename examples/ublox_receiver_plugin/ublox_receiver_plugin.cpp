@@ -1,12 +1,13 @@
 #include "ublox_receiver_plugin.h"
 
+#include <boost/thread.hpp>
+
+#include "command.h"
 #include "createReceiverCommand.h"
 #include "receiver_enums.h"
-#include "startCommands.h"
+#include "startCommand.h"
 #include "ublox.h"
 #include "ublox_receiver_view.h"
-#include "command.h"
-#include <boost/thread.hpp>
 
 using namespace ublox;
 
@@ -25,8 +26,9 @@ QWidget* UbloxReceiverPlugin::createUI()
   this->view = new UbloxReceiverView;
 
   connect(view->connectReceiverView, &ConnectReceiverView::connectReceiver, [this]() {
-    // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find port
     m_skydelNotifier->notify("Connecting to the Ublox receiver");
+    // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find a port
+    // with a ublox receiver. Also need to change the ui (should ask for the baud rate but not the port) 
     CreateUbloxReceiverCommand command(9600, "/dev/ttyACM0");
     ubloxReceiver = command.execute();
     view->startReceiverView->setReceiverStatus(ReceiverStatus::INACTIVE);
@@ -34,42 +36,12 @@ QWidget* UbloxReceiverPlugin::createUI()
 
   connect(view->startReceiverView, &StartReceiverView::startClicked, [this](ReceiverStartType startType) {
     view->startReceiverView->setReceiverStatus(ReceiverStatus::STARTING);
-    switch (startType)
-    {
-      case ReceiverStartType::HOT:
-      {
-        m_skydelNotifier->notify("Hot starting the Ublox receiver");
-        new boost::thread([this]()
-        {
-          ReceiverHotStartCommand command(this->ubloxReceiver);
-          command.execute();
-          this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
-        });
-        break;
-      }
-      case ReceiverStartType::WARM:
-      {
-        m_skydelNotifier->notify("Warm starting the Ublox receiver");
-        new boost::thread([this]()
-        {
-          ReceiverWarmStartCommand command(this->ubloxReceiver);
-          command.execute();
-          this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
-        });
-        break;
-      }
-      default: // By default, run a cold start
-      {
-        m_skydelNotifier->notify("Cold starting the Ublox receiver");
-        new boost::thread([this]()
-        {
-          ReceiverColdStartCommand command(this->ubloxReceiver);
-          command.execute();
-          this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
-        });
-        break;
-      }
-    }
+    m_skydelNotifier->notify("Starting the Ublox receiver");
+    new boost::thread([this, startType]() {
+      ReceiverStartCommand command(this->ubloxReceiver);
+      command.execute(startType);
+      this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
+    });
   });
 
   // TODO: add a disconnect butten which calls ubloxReceiver.Disconnect();
