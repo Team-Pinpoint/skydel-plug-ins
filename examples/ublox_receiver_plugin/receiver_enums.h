@@ -17,4 +17,4 @@ enum class ReceiverStatus
   NOT_DETECTED
 };
 
-#endif  
+#endif

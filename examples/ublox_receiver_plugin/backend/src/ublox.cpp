@@ -428,6 +428,8 @@ void Ublox::ReadSerialPort() {
     // continuously read data from serial port
     while (reading_status_) {
         // read data
+		std::stringstream output;
+		output << reading_status_;
         try {
             len = serial_port_->read(buffer, MAX_NOUT_SIZE);
         } catch (exception &e) {

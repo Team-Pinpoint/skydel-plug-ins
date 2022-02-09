@@ -1,7 +1,7 @@
 #include "start_receiver_view.h"
 
-#include "ui_start_receiver_view.h"
 #include "receiver_enums.h"
+#include "ui_start_receiver_view.h"
 
 StartReceiverView::StartReceiverView(QWidget* parent) : QWidget(parent), ui(new Ui::StartReceiverView)
 {

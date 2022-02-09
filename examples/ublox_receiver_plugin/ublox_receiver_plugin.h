@@ -1,13 +1,11 @@
 #ifndef UBLOX_RECEIVER_PLUGIN_H
 #define UBLOX_RECEIVER_PLUGIN_H
 
+#include "receiver_enums.h"
 #include "skydel_plug_ins/skydel_core_interface.h"
 #include "skydel_plug_ins/skydel_plugin.h"
-
-#include "ublox_receiver_view.h"
-#include "receiver_enums.h"
-
 #include "ublox.h"
+#include "ublox_receiver_view.h"
 
 using namespace ublox;
 
@@ -31,7 +29,7 @@ signals:
 private:
   SkydelNotifierInterface* m_skydelNotifier;
   UbloxReceiverView* view;
-  Ublox ublox_receiver;
+  Ublox* ubloxReceiver;
 };
 
 // Required boilerplate

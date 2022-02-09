@@ -1,7 +1,6 @@
 #include "startCommands.h"
 #include <iostream>
 
-bool ReceiverResetCommand::receiver_reset = false;
 ReceiverColdStartCommand::~ReceiverColdStartCommand(){}
 void ReceiverColdStartCommand::execute(){
     std::cout << "Setting Nav Status Callback" << std::endl;

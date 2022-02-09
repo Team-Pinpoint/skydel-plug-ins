@@ -1,8 +1,6 @@
 #include "startCommands.h"
 #include <iostream>
 
-// TODO: fix and uncomment
-//bool ReceiverResetCommand::receiver_reset = false;
 ReceiverHotStartCommand::~ReceiverHotStartCommand(){}
 void ReceiverHotStartCommand::execute(){
     std::cout << "Setting Nav Status Callback" << std::endl;

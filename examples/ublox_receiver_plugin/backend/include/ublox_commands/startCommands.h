@@ -4,8 +4,7 @@
 
 class ReceiverResetCommand: public Command{
     public:
-        ReceiverResetCommand(ublox::Ublox *recv = 0): Command(recv){
-        };
+        ReceiverResetCommand(ublox::Ublox *recv = 0): Command(recv){};
         ~ReceiverResetCommand(){};
         static void NavigationStatusCallback(ublox::NavStatus &nav_status, double &time_stamp){
             try{

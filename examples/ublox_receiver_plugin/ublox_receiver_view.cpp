@@ -1,7 +1,7 @@
 #include "ublox_receiver_view.h"
 
-#include "ui_ublox_receiver_view.h"
 #include "receiver_enums.h"
+#include "ui_ublox_receiver_view.h"
 
 UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new Ui::UbloxReceiverView)
 {
