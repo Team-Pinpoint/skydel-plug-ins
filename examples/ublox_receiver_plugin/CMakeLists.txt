@@ -6,7 +6,6 @@ file(GLOB UBLOX_RECEIVER_PLUGIN_SRC *.cpp *.ui
     backend/src/*.cc
     backend/src/*.cpp
     backend/src/impl/*.cc
-    backend/src/impl/list_ports/*.cc
     backend/src/commands/*.cpp
     )
 
