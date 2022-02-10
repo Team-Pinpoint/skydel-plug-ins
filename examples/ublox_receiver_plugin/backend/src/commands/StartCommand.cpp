@@ -4,6 +4,7 @@
 
 bool ReceiverStartCommand::receiver_reset = false;
 void ReceiverStartCommand::execute(ReceiverStartType startType){
+    ReceiverStartCommand::receiver_reset = false;
     std::cout << "Setting Nav Status Callback" << std::endl;
     (receiver -> set_nav_status_callback)(NavigationStatusCallback);
     std::cout << "Setting Nav Status Refresh" << std::endl;

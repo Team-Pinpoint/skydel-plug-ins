@@ -37,14 +37,16 @@ QWidget* UbloxReceiverPlugin::createUI()
   connect(view->startReceiverView, &StartReceiverView::startClicked, [this](ReceiverStartType startType) {
     view->startReceiverView->setReceiverStatus(ReceiverStatus::STARTING);
     m_skydelNotifier->notify("Starting the Ublox receiver");
-    new boost::thread([this, startType]() {
+    boost::thread startThread([this, startType]() {
       ReceiverStartCommand command(this->ubloxReceiver);
       command.execute(startType);
       this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
     });
+    startThread.detach();
   });
 
   // TODO: add a disconnect butten which calls ubloxReceiver.Disconnect();
+  // we may need to remove the connect receiver popup ui for this as well
 
   // TODO: could start a thread which goes into a while loop and keeps checking the status of
   // the ubloxReceiver and updating the frontend status (need to add something to ublox.h)
