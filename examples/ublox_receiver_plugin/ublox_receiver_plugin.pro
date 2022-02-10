@@ -22,7 +22,6 @@ HEADERS += \
     start_receiver_view.h \
     ublox_receiver_plugin.h \
     ublox_receiver_view.h \
-    receiver_enums.h \
     backend/include/ublox_commands/*.h \
     backend/include/serial/*.h \
     backend/include/serial/impl/*.h \
