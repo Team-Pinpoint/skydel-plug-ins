@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#include "receiver_enums.h"
+
 namespace Ui
 {
 class StartReceiverView;
@@ -15,20 +17,6 @@ class StartReceiverView : public QWidget
 public:
   explicit StartReceiverView(QWidget* parent = nullptr);
   ~StartReceiverView();
-  enum class ReceiverStatus
-  {
-    ACTIVE,
-    INACTIVE,
-    STARTING,
-    NOT_DETECTED
-  };
-  enum class ReceiverStartType
-  {
-    NONE = 0,
-    COLD = 1,
-    WARM = 2,
-    HOT = 3
-  };
   void setReceiverStatus(ReceiverStatus status);
 
 signals:

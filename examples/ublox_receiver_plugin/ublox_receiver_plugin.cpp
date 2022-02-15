@@ -1,6 +1,15 @@
 #include "ublox_receiver_plugin.h"
 
+#include <boost/thread.hpp>
+
+#include "command.h"
+#include "createReceiverCommand.h"
+#include "receiver_enums.h"
+#include "startCommand.h"
+#include "ublox.h"
 #include "ublox_receiver_view.h"
+
+using namespace ublox;
 
 void UbloxReceiverPlugin::setConfiguration(const QString& version, const QJsonObject& configuration)
 {
@@ -14,14 +23,33 @@ QJsonObject UbloxReceiverPlugin::getConfiguration() const
 
 QWidget* UbloxReceiverPlugin::createUI()
 {
-  auto view = new UbloxReceiverView;
-  auto startReceiverView = view->startReceiverView;
+  this->view = new UbloxReceiverView;
 
-  connect(startReceiverView,
-          &StartReceiverView::startClicked,
-          [startReceiverView](StartReceiverView::ReceiverStartType startType) {
-            startReceiverView->setReceiverStatus(StartReceiverView::ReceiverStatus::STARTING);
-          });
+  connect(view->connectReceiverView, &ConnectReceiverView::connectReceiver, [this]() {
+    m_skydelNotifier->notify("Connecting to the Ublox receiver");
+    // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find a port
+    // with a ublox receiver. Also need to change the ui (should ask for the baud rate but not the port) 
+    CreateUbloxReceiverCommand command(9600, "/dev/ttyACM0");
+    ubloxReceiver = command.execute();
+    view->startReceiverView->setReceiverStatus(ReceiverStatus::INACTIVE);
+  });
+
+  connect(view->startReceiverView, &StartReceiverView::startClicked, [this](ReceiverStartType startType) {
+    view->startReceiverView->setReceiverStatus(ReceiverStatus::STARTING);
+    m_skydelNotifier->notify("Starting the Ublox receiver");
+    boost::thread startThread([this, startType]() {
+      ReceiverStartCommand command(this->ubloxReceiver);
+      command.execute(startType);
+      this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
+    });
+    startThread.detach();
+  });
+
+  // TODO: add a disconnect butten which calls ubloxReceiver.Disconnect();
+  // we may need to remove the connect receiver popup ui for this as well
+
+  // TODO: could start a thread which goes into a while loop and keeps checking the status of
+  // the ubloxReceiver and updating the frontend status (need to add something to ublox.h)
 
   return view;
 }

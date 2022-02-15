@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>UbloxReceiverView</string>
   </property>
-  <widget class="StartReceiverView" name="startReceiverWidget" native="true">
+  <widget class="StartReceiverView" name="startReceiverView" native="true">
    <property name="geometry">
     <rect>
      <x>110</x>
