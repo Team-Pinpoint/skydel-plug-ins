@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libublox_commands.a CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o CMakeFiles/ublox_commands.dir/src/commands/CreateUbloxReceiver.o CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libublox_commands.a

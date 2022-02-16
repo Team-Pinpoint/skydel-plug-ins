@@ -38,7 +38,7 @@
 #define UBLOX_H
 
 #include "ublox_structures.h"
-#include "serial/serial.h"
+#include "serial.h"
 #include <fstream>
 
 #include <boost/function.hpp>

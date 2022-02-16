@@ -1,9 +1,8 @@
 #include "startCommand.h"
-#include "receiver_enums.h"
 #include <iostream>
 
 bool ReceiverStartCommand::receiver_reset = false;
-void ReceiverStartCommand::execute(ReceiverStartType startType){
+void ReceiverStartCommand::execute(ReceiverStartCommand::ReceiverStartType startType){
     ReceiverStartCommand::receiver_reset = false;
     std::cout << "Setting Nav Status Callback" << std::endl;
     (receiver -> set_nav_status_callback)(NavigationStatusCallback);

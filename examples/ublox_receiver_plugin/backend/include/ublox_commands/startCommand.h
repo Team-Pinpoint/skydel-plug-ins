@@ -7,6 +7,7 @@ class ReceiverStartCommand: public Command{
     public:
         ReceiverStartCommand(ublox::Ublox *recv = 0): Command(recv){};
         ~ReceiverStartCommand(){};
+        enum ReceiverStartType{NONE = 0,COLD = 1,WARM = 2,HOT = 3};
         static void NavigationStatusCallback(ublox::NavStatus &nav_status, double &time_stamp){
             try{
                 std::cout << "GPS Fix Type: "<< std::endl;
@@ -40,7 +41,7 @@ class ReceiverStartCommand: public Command{
                 std::cout << "PseudorangeData() error";
             }    
         }
-        void execute(ReceiverStartType startType);
+        void execute(ReceiverStartCommand::ReceiverStartType startType);
     protected:
         static bool receiver_reset;
 };
