@@ -1232,8 +1232,11 @@ CMakeFiles/command_example.dir/examples/command_example.o: ../examples/command_e
   ../include/ublox_commands/createReceiverCommand.h \
   ../include/ublox_commands/command.h \
   ../include/ublox_commands/startCommand.h \
-  ../include/ublox_commands/receiver_enums.h
+  ../include/ublox_commands/receiver_enums.h \
+  ../include/ublox_commands/currentFixCommand.h
 
+
+../include/ublox_commands/currentFixCommand.h:
 
 ../include/ublox_commands/receiver_enums.h:
 
