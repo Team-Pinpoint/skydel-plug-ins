@@ -25,28 +25,31 @@ QWidget* UbloxReceiverPlugin::createUI()
 {
   this->view = new UbloxReceiverView;
 
-  connect(view->connectReceiverView, &ConnectReceiverView::connectReceiver, [this]() {
+  connect(view, &UbloxReceiverView::connectReceiver, [this](int baudRate) {
     m_skydelNotifier->notify("Connecting to the Ublox receiver");
     // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find a port
     // with a ublox receiver. Also need to change the ui (should ask for the baud rate but not the port) 
-    CreateUbloxReceiverCommand command(9600, "/dev/ttyACM0");
+    CreateUbloxReceiverCommand command(baudRate, "/dev/ttyACM0");
     ubloxReceiver = command.execute();
-    view->startReceiverView->setReceiverStatus(ReceiverStatus::INACTIVE);
+    view->setReceiverStatus(ReceiverStatus::INACTIVE);
   });
 
-  connect(view->startReceiverView, &StartReceiverView::startClicked, [this](ReceiverStartType startType) {
-    view->startReceiverView->setReceiverStatus(ReceiverStatus::STARTING);
+  connect(view, &UbloxReceiverView::disconnectReceiver, [this]() {
+    m_skydelNotifier->notify("Disconnecting from the Ublox receiver");
+    this->ubloxReceiver->Disconnect();
+    view->setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
+  });
+
+  connect(view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
+    view->setReceiverStatus(ReceiverStatus::STARTING);
     m_skydelNotifier->notify("Starting the Ublox receiver");
     boost::thread startThread([this, startType]() {
       ReceiverStartCommand command(this->ubloxReceiver);
       command.execute(startType);
-      this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
+      this->view->setReceiverStatus(ReceiverStatus::ACTIVE);
     });
     startThread.detach();
   });
-
-  // TODO: add a disconnect butten which calls ubloxReceiver.Disconnect();
-  // we may need to remove the connect receiver popup ui for this as well
 
   // TODO: could start a thread which goes into a while loop and keeps checking the status of
   // the ubloxReceiver and updating the frontend status (need to add something to ublox.h)
