@@ -8,7 +8,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
   ui->setupUi(this);
 
   selectedStartType = ReceiverStartType::NONE;
-  setReceiverStatus(ReceiverStatus::NOT_DETECTED);
+  setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
 
   connect(ui->startButton, &QPushButton::clicked, [this] {
     ui->startButton->setEnabled(false);
@@ -28,7 +28,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
   });
 
   connect(ui->connectReceiverButton, &QPushButton::clicked, [this] {
-    if (this->receiverStatus == ReceiverStatus::NOT_DETECTED)
+    if (this->receiverStatus == ReceiverStatus::NOT_CONNECTED)
     {
       int baudRate = ui->baudRateSelect->currentText().toInt();
       emit connectReceiver(baudRate);
@@ -50,10 +50,10 @@ void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
   this->receiverStatus = status;
   switch (status)
   {
-    case ReceiverStatus::NOT_DETECTED:
+    case ReceiverStatus::NOT_CONNECTED:
       ui->connectReceiverButton->setText("Connect");
       ui->baudRateSelect->setDisabled(false);
-      ui->receiverStatusLabel->setText("[Not Detected]");
+      ui->receiverStatusLabel->setText("[Not Connected]");
       ui->startButton->setDisabled(true);
       break;
     case ReceiverStatus::STARTING:

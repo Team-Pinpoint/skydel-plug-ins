@@ -14,7 +14,7 @@ enum class ReceiverStatus
   ACTIVE,
   INACTIVE,
   STARTING,
-  NOT_DETECTED
+  NOT_CONNECTED
 };
 
 #endif

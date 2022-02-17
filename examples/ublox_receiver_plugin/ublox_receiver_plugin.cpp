@@ -37,7 +37,7 @@ QWidget* UbloxReceiverPlugin::createUI()
   connect(view, &UbloxReceiverView::disconnectReceiver, [this]() {
     m_skydelNotifier->notify("Disconnecting from the Ublox receiver");
     this->ubloxReceiver->Disconnect();
-    view->setReceiverStatus(ReceiverStatus::NOT_DETECTED); // TODO: change this to Not Connected in the frontend?
+    view->setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
   });
 
   connect(view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {

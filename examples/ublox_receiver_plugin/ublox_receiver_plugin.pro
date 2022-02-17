@@ -24,8 +24,6 @@ HEADERS += \
     backend/include/ublox/*.h
 
 FORMS += \
-    connect_receiver_view.ui \
-    start_receiver_view.ui \
     ublox_receiver_view.ui
 
 DISTFILES += \
