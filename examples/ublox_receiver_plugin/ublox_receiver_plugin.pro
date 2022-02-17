@@ -8,8 +8,6 @@ INCLUDEPATH += \
     backend/include/ublox_commands
 
 SOURCES += \
-    connect_receiver_view.cpp \
-    start_receiver_view.cpp \
     ublox_receiver_plugin.cpp \
     ublox_receiver_view.cpp \
     backend/src/*.cpp \
@@ -18,8 +16,6 @@ SOURCES += \
     backend/src/impl/*.cc
 
 HEADERS += \
-    connect_receiver_view.h \
-    start_receiver_view.h \
     ublox_receiver_plugin.h \
     ublox_receiver_view.h \
     backend/include/ublox_commands/*.h \
