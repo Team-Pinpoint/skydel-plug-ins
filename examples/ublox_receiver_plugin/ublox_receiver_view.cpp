@@ -84,4 +84,3 @@ void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
       break;
   }
 }
-

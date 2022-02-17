@@ -28,7 +28,7 @@ QWidget* UbloxReceiverPlugin::createUI()
   connect(view, &UbloxReceiverView::connectReceiver, [this](int baudRate) {
     m_skydelNotifier->notify("Connecting to the Ublox receiver");
     // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find a port
-    // with a ublox receiver. Also need to change the ui (should ask for the baud rate but not the port) 
+    // with a ublox receiver. Also need to change the ui (should ask for the baud rate but not the port)
     CreateUbloxReceiverCommand command(baudRate, "/dev/ttyACM0");
     ubloxReceiver = command.execute();
     view->setReceiverStatus(ReceiverStatus::INACTIVE);
