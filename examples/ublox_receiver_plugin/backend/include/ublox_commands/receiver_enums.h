@@ -11,10 +11,13 @@ enum class ReceiverStartType
 
 enum class ReceiverStatus
 {
-  ACTIVE,
-  INACTIVE,
-  STARTING,
-  NOT_CONNECTED
+  NOT_CONNECTED,
+  NO_FIX,
+  FIX_1D,
+  FIX_2D,
+  FIX_3D,
+  GPS_AND_DEAD_RECKONING,
+  TIME_ONLY
 };
 
 #endif

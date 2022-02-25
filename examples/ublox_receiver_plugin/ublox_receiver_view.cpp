@@ -10,10 +10,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
   selectedStartType = ReceiverStartType::NONE;
   setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
 
-  connect(ui->startButton, &QPushButton::clicked, [this] {
-    ui->startButton->setEnabled(false);
-    emit startClicked(this->selectedStartType);
-  });
+  connect(ui->startButton, &QPushButton::clicked, [this] { emit startClicked(this->selectedStartType); });
 
   connect(ui->startTypeSelect, qOverload<int>(&QComboBox::currentIndexChanged), [this](int index) {
     this->selectedStartType = (ReceiverStartType)index;
@@ -21,7 +18,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new 
     {
       ui->startButton->setEnabled(false);
     }
-    else if (receiverStatus == ReceiverStatus::ACTIVE || receiverStatus == ReceiverStatus::INACTIVE)
+    else if (receiverStatus != ReceiverStatus::NOT_CONNECTED)
     {
       ui->startButton->setEnabled(true);
     }
@@ -47,40 +44,50 @@ UbloxReceiverView::~UbloxReceiverView()
 
 void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
 {
+  if (this->receiverStatus == status)
+  {
+    return;
+  }
   this->receiverStatus = status;
+
+  // Handling NOT_CONNECTED status seperatly
+  if (status == ReceiverStatus::NOT_CONNECTED)
+  {
+    ui->connectReceiverButton->setText("Connect");
+    ui->baudRateSelect->setDisabled(false);
+    ui->receiverStatusLabel->setText("[Not Connected]");
+    ui->startButton->setDisabled(true);
+    return;
+  }
+
+  // Updating connect receiver button, baud rate input, and the start button
+  ui->connectReceiverButton->setText("Disconnect");
+  ui->baudRateSelect->setDisabled(true);
+  if (this->selectedStartType != ReceiverStartType::NONE)
+  {
+    ui->startButton->setDisabled(false);
+  }
+
+  // Updating the receiver status label
   switch (status)
   {
-    case ReceiverStatus::NOT_CONNECTED:
-      ui->connectReceiverButton->setText("Connect");
-      ui->baudRateSelect->setDisabled(false);
-      ui->receiverStatusLabel->setText("[Not Connected]");
-      ui->startButton->setDisabled(true);
+    case ReceiverStatus::FIX_1D:
+      ui->receiverStatusLabel->setText("[1D Fix]");
       break;
-    case ReceiverStatus::STARTING:
-      ui->connectReceiverButton->setText("Disconnect");
-      ui->baudRateSelect->setDisabled(true);
-      ui->receiverStatusLabel->setText("[Starting]");
-      ui->startButton->setDisabled(true);
+    case ReceiverStatus::FIX_2D:
+      ui->receiverStatusLabel->setText("[2D Fix]");
       break;
-    case ReceiverStatus::INACTIVE:
-      ui->connectReceiverButton->setText("Disconnect");
-      ui->baudRateSelect->setDisabled(true);
-      ui->receiverStatusLabel->setText("[Inactive]");
-      if (this->selectedStartType != ReceiverStartType::NONE)
-      {
-        ui->startButton->setDisabled(false);
-      }
+    case ReceiverStatus::FIX_3D:
+      ui->receiverStatusLabel->setText("[3D Fix]");
       break;
-    case ReceiverStatus::ACTIVE:
-      ui->connectReceiverButton->setText("Disconnect");
-      ui->baudRateSelect->setDisabled(true);
-      ui->receiverStatusLabel->setText("[Active]");
-      if (this->selectedStartType != ReceiverStartType::NONE)
-      {
-        ui->startButton->setDisabled(false);
-      }
+    case ReceiverStatus::GPS_AND_DEAD_RECKONING:
+      ui->receiverStatusLabel->setText("[GPS and Dead Reckoning]");
+      break;
+    case ReceiverStatus::TIME_ONLY:
+      ui->receiverStatusLabel->setText("[Time Only]");
       break;
     default:
+      ui->receiverStatusLabel->setText("[No Fix]");
       break;
   }
 }

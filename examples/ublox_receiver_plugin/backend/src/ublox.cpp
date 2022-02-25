@@ -386,6 +386,7 @@ bool Ublox::Ping(int num_attempts) {
 
 void Ublox::Disconnect() {
 	try {
+		is_connected_ = false;
 		if (reading_status_) {
 			StopReading();
 		}

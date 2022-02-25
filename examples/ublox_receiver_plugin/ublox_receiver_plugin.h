@@ -1,6 +1,8 @@
 #ifndef UBLOX_RECEIVER_PLUGIN_H
 #define UBLOX_RECEIVER_PLUGIN_H
 
+#include <boost/thread.hpp>
+
 #include "receiver_enums.h"
 #include "skydel_plug_ins/skydel_core_interface.h"
 #include "skydel_plug_ins/skydel_plugin.h"
@@ -30,6 +32,7 @@ private:
   SkydelNotifierInterface* m_skydelNotifier;
   UbloxReceiverView* view;
   Ublox* ubloxReceiver;
+  boost::mutex ubloxMutex;
 };
 
 // Required boilerplate
