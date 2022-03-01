@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o.d"
   "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o"
   "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o.d"
+  "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o"
+  "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o.d"
   "libublox_commands.a"
   "libublox_commands.pdb"
 )

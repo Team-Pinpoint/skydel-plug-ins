@@ -1235,4 +1235,5 @@ CMakeFiles/command_example.dir/examples/command_example.o
  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/startCommand.h
  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/receiver_enums.h
  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/currentFixCommand.h
+ /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/timeCommand.h
 
