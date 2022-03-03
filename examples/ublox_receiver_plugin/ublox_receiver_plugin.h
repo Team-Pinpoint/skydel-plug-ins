@@ -1,6 +1,8 @@
 #ifndef UBLOX_RECEIVER_PLUGIN_H
 #define UBLOX_RECEIVER_PLUGIN_H
 
+#include <boost/thread.hpp>
+
 #include "receiver_enums.h"
 #include "skydel_plug_ins/skydel_core_interface.h"
 #include "skydel_plug_ins/skydel_plugin.h"
@@ -28,8 +30,12 @@ signals:
 
 private:
   SkydelNotifierInterface* m_skydelNotifier;
-  UbloxReceiverView* view;
-  Ublox* ubloxReceiver;
+  UbloxReceiverView* m_view;
+  Ublox* m_ubloxReceiver;
+  boost::mutex m_ubloxMutex;
+  void m_connectReceiver(int baudRate);
+  void m_disconnectReceiver();
+  void m_startReceiver(ReceiverStartType startType);
 };
 
 // Required boilerplate
