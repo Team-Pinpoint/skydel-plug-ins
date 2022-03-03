@@ -4,7 +4,6 @@
 
 void ReceiverStartCommand::execute(ReceiverStartType startType){
     if (receiver && receiver->IsConnected()) {
-        (receiver -> ConfigureMessageRate)(0x01,0x03,1);
         switch (startType) {
             case ReceiverStartType::HOT:
                 std::cout << "Hot Starting Receiver" << std::endl;
