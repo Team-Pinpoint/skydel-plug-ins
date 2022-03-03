@@ -30,9 +30,12 @@ signals:
 
 private:
   SkydelNotifierInterface* m_skydelNotifier;
-  UbloxReceiverView* view;
-  Ublox* ubloxReceiver;
-  boost::mutex ubloxMutex;
+  UbloxReceiverView* m_view;
+  Ublox* m_ubloxReceiver;
+  boost::mutex m_ubloxMutex;
+  void m_connectReceiver(int baudRate);
+  void m_disconnectReceiver();
+  void m_startReceiver(ReceiverStartType startType);
 };
 
 // Required boilerplate

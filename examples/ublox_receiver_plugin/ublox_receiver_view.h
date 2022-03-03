@@ -5,12 +5,10 @@
 
 #include "receiver_enums.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class UbloxReceiverView;
 }
-QT_END_NAMESPACE
 
 class UbloxReceiverView : public QWidget
 {
@@ -27,8 +25,10 @@ signals:
   void startClicked(ReceiverStartType startType);
 
 private:
-  Ui::UbloxReceiverView* ui;
-  ReceiverStatus receiverStatus;
-  ReceiverStartType selectedStartType;
+  Ui::UbloxReceiverView* m_ui;
+  ReceiverStatus m_receiverStatus;
+  ReceiverStartType m_selectedStartType;
+  void m_startTypeIndexChanged(int index);
+  void m_connectReceiverClicked();
 };
 #endif // UBLOXRECEIVERVIEW_H

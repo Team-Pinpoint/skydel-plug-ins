@@ -3,91 +3,103 @@
 #include "receiver_enums.h"
 #include "ui_ublox_receiver_view.h"
 
-UbloxReceiverView::UbloxReceiverView(QWidget* parent) : QWidget(parent), ui(new Ui::UbloxReceiverView)
+UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
+  QWidget(parent),
+  m_ui(new Ui::UbloxReceiverView),
+  m_receiverStatus(ReceiverStatus::NOT_CONNECTED),
+  m_selectedStartType(ReceiverStartType::NONE)
 {
-  ui->setupUi(this);
+  m_ui->setupUi(this);
 
-  selectedStartType = ReceiverStartType::NONE;
   setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
 
-  connect(ui->startButton, &QPushButton::clicked, [this] { emit startClicked(this->selectedStartType); });
+  connect(m_ui->startButton, &QPushButton::clicked, [this] { emit startClicked(m_selectedStartType); });
 
-  connect(ui->startTypeSelect, qOverload<int>(&QComboBox::currentIndexChanged), [this](int index) {
-    this->selectedStartType = (ReceiverStartType)index;
-    if (index == 0)
-    {
-      ui->startButton->setEnabled(false);
-    }
-    else if (receiverStatus != ReceiverStatus::NOT_CONNECTED)
-    {
-      ui->startButton->setEnabled(true);
-    }
-  });
+  connect(m_ui->startTypeSelect,
+          qOverload<int>(&QComboBox::currentIndexChanged),
+          this,
+          &UbloxReceiverView::m_startTypeIndexChanged);
 
-  connect(ui->connectReceiverButton, &QPushButton::clicked, [this] {
-    if (this->receiverStatus == ReceiverStatus::NOT_CONNECTED)
-    {
-      int baudRate = ui->baudRateSelect->currentText().toInt();
-      emit connectReceiver(baudRate);
-    }
-    else
-    {
-      emit disconnectReceiver();
-    }
-  });
+  connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::m_connectReceiverClicked);
 }
 
 UbloxReceiverView::~UbloxReceiverView()
 {
-  delete ui;
+  delete m_ui;
 }
 
 void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
 {
-  if (this->receiverStatus == status)
+  if (m_receiverStatus == status)
   {
     return;
   }
-  this->receiverStatus = status;
+  m_receiverStatus = status;
 
   // Handling NOT_CONNECTED status seperatly
   if (status == ReceiverStatus::NOT_CONNECTED)
   {
-    ui->connectReceiverButton->setText("Connect");
-    ui->baudRateSelect->setDisabled(false);
-    ui->receiverStatusLabel->setText("[Not Connected]");
-    ui->startButton->setDisabled(true);
+    m_ui->connectReceiverButton->setText("Connect");
+    m_ui->baudRateSelect->setDisabled(false);
+    m_ui->receiverStatusLabel->setText("[Not Connected]");
+    m_ui->startButton->setDisabled(true);
     return;
   }
 
   // Updating connect receiver button, baud rate input, and the start button
-  ui->connectReceiverButton->setText("Disconnect");
-  ui->baudRateSelect->setDisabled(true);
-  if (this->selectedStartType != ReceiverStartType::NONE)
+  m_ui->connectReceiverButton->setText("Disconnect");
+  m_ui->baudRateSelect->setDisabled(true);
+  if (m_selectedStartType != ReceiverStartType::NONE)
   {
-    ui->startButton->setDisabled(false);
+    m_ui->startButton->setDisabled(false);
   }
 
   // Updating the receiver status label
   switch (status)
   {
     case ReceiverStatus::FIX_1D:
-      ui->receiverStatusLabel->setText("[1D Fix]");
+      m_ui->receiverStatusLabel->setText("[1D Fix]");
       break;
     case ReceiverStatus::FIX_2D:
-      ui->receiverStatusLabel->setText("[2D Fix]");
+      m_ui->receiverStatusLabel->setText("[2D Fix]");
       break;
     case ReceiverStatus::FIX_3D:
-      ui->receiverStatusLabel->setText("[3D Fix]");
+      m_ui->receiverStatusLabel->setText("[3D Fix]");
       break;
     case ReceiverStatus::GPS_AND_DEAD_RECKONING:
-      ui->receiverStatusLabel->setText("[GPS and Dead Reckoning]");
+      m_ui->receiverStatusLabel->setText("[GPS and Dead Reckoning]");
       break;
     case ReceiverStatus::TIME_ONLY:
-      ui->receiverStatusLabel->setText("[Time Only]");
+      m_ui->receiverStatusLabel->setText("[Time Only]");
       break;
     default:
-      ui->receiverStatusLabel->setText("[No Fix]");
+      m_ui->receiverStatusLabel->setText("[No Fix]");
       break;
+  }
+}
+
+void UbloxReceiverView::m_startTypeIndexChanged(int index)
+{
+  m_selectedStartType = (ReceiverStartType)index;
+  if (index == 0)
+  {
+    m_ui->startButton->setEnabled(false);
+  }
+  else if (m_receiverStatus != ReceiverStatus::NOT_CONNECTED)
+  {
+    m_ui->startButton->setEnabled(true);
+  }
+}
+
+void UbloxReceiverView::m_connectReceiverClicked()
+{
+  if (m_receiverStatus == ReceiverStatus::NOT_CONNECTED)
+  {
+    int baudRate = m_ui->baudRateSelect->currentText().toInt();
+    emit connectReceiver(baudRate);
+  }
+  else
+  {
+    emit disconnectReceiver();
   }
 }
