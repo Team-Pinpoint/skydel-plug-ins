@@ -28,7 +28,7 @@ QWidget* UbloxReceiverPlugin::createUI()
 
   connect(m_view, &UbloxReceiverView::connectReceiver, [this](int baudRate) { m_connectReceiver(baudRate); });
 
-  connect(m_view, &UbloxReceiverView::disconnectReceiver, this, &UbloxReceiverPlugin::disconnectReceiver);
+  connect(m_view, &UbloxReceiverView::disconnectReceiver, this, &UbloxReceiverPlugin::m_disconnectReceiver);
 
   connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
     m_startReceiver(startType);
