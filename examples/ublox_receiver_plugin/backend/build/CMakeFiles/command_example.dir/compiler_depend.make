@@ -1234,7 +1234,8 @@ CMakeFiles/command_example.dir/examples/command_example.o: ../examples/command_e
   ../include/ublox_commands/startCommand.h \
   ../include/ublox_commands/receiver_enums.h \
   ../include/ublox_commands/currentFixCommand.h \
-  ../include/ublox_commands/timeCommand.h
+  ../include/ublox_commands/timeCommand.h \
+  ../include/ublox_commands/getConfigurationCommand.h
 
 
 ../include/ublox_commands/currentFixCommand.h:
@@ -2064,6 +2065,8 @@ CMakeFiles/command_example.dir/examples/command_example.o: ../examples/command_e
 /opt/homebrew/include/boost/preprocessor/arithmetic/add.hpp:
 
 /opt/homebrew/include/boost/preprocessor/facilities/identity.hpp:
+
+../include/ublox_commands/getConfigurationCommand.h:
 
 /opt/homebrew/include/boost/preprocessor/identity.hpp:
 
