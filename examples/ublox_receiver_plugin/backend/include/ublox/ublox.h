@@ -78,6 +78,13 @@ typedef boost::function<void(SubframeData&, double&)> RxmSubframeCallback;
 typedef boost::function<void(SVStatus&, double&)> RxmSvsiCallback;
 typedef boost::function<void(ParsedEphemData&, double&)> ParsedEphemCallback;
 
+// GAL Data Callbacks
+typedef boost::function<void(NavGALTime&, double&)> NavGALTimeCallback;
+typedef boost::function<void(NavGLOTime&, double&)> NAVGLOTimeCallback; 
+typedef boost::function<void(NavBDSTime&, double&)> NavBDSTimeCallback;
+
+typedef boost::function<void(CfgGNSS&, double&)> CfgGNSSCallback;
+
 class Ublox
 {
 public:
@@ -199,6 +206,7 @@ public:
     void set_configure_navigation_parameters_callback(ConfigureNavigationParametersCallback callback){
         configure_navigation_parameters_callback_ = callback;};
     void set_parsed_ephem_callback(ParsedEphemCallback callback){parsed_ephem_callback_ = callback;};
+    void set_configure_gnss_callback(CfgGNSSCallback callback){cfg_gnss_callback_ = callback;};
 
     void calculateCheckSum(uint8_t* in, size_t length, uint8_t* out);
 private:
@@ -273,6 +281,7 @@ private:
     RxmSubframeCallback rxm_subframe_callback_;
     RxmSvsiCallback rxm_svsi_callback_;
     ParsedEphemCallback parsed_ephem_callback_;
+    CfgGNSSCallback cfg_gnss_callback_;
 	
 	//////////////////////////////////////////////////////
 	// Incoming data buffers

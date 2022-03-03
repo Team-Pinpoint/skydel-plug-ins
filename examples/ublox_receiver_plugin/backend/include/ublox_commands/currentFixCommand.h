@@ -9,9 +9,7 @@ class ReceiverGetFixCommand: public Command{
         ~ReceiverGetFixCommand(){};
         static void NavigationStatusCallbackIsFixed(ublox::NavStatus &nav_status, double &time_stamp){
             try{
-                std::cout << "GPS Fix Type: "<< std::endl;
                 if (nav_status.fixtype == 0x03) {
-                    std::cout << "3D Fix" << std::endl;
                     if(ReceiverGetFixCommand::receiverFixCycles == 3){
                         ReceiverGetFixCommand::receiverFix = true;
                     }

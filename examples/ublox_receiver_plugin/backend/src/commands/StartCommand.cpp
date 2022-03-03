@@ -4,9 +4,7 @@
 bool ReceiverStartCommand::receiver_reset = false;
 void ReceiverStartCommand::execute(ReceiverStartCommand::ReceiverStartType startType){
     ReceiverStartCommand::receiver_reset = false;
-    std::cout << "Setting Nav Status Callback" << std::endl;
     (receiver -> set_nav_status_callback)(NavigationStatusCallback);
-    std::cout << "Setting Nav Status Refresh" << std::endl;
     (receiver -> ConfigureMessageRate)(0x01,0x03,1);
     switch (startType) {
         case ReceiverStartType::HOT:

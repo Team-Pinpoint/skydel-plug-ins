@@ -7,6 +7,8 @@
 #include "createReceiverCommand.h"
 #include "startCommand.h"
 #include "currentFixCommand.h"
+#include "timeCommand.h"
+#include "getConfigurationCommand.h"
 
 // #include "boost/filesystem.hpp"
 
@@ -70,16 +72,21 @@ int main(int argc, char **argv)
 
     ReceiverGetFixCommand getcurfix(my_gps);
     bool fix = getcurfix.execute();
-    std::cerr << "Is fixed" << fix << std::endl;
+    std::cerr << "Is fixed " << fix << std::endl;
 
+    GetConfigurationCommand getconfig(my_gps);
+    getconfig.execute();
+
+    // UTCTimeCommand timeCommand(my_gps);
+    // timeCommand.execute();
     //comand test
-    ReceiverStartCommand coldstartcmd(my_gps);
-    coldstartcmd.execute(ReceiverStartCommand::ReceiverStartType::WARM);
-    bool fix_after_warm = getcurfix.execute();
-    std::cerr << "Is fixed" << fix_after_warm << std::endl;
-    coldstartcmd.execute(ReceiverStartCommand::ReceiverStartType::HOT);
-    bool fix_after_hot = getcurfix.execute();
-    std::cerr << "Is fixed" << fix_after_hot << std::endl;
+    // ReceiverStartCommand coldstartcmd(my_gps);
+    // coldstartcmd.execute(ReceiverStartCommand::ReceiverStartType::WARM);
+    // bool fix_after_warm = getcurfix.execute();
+    // std::cerr << "Is fixed " << fix_after_warm << std::endl;
+    // coldstartcmd.execute(ReceiverStartCommand::ReceiverStartType::HOT);
+    // bool fix_after_hot = getcurfix.execute();
+    // std::cerr << "Is fixed " << fix_after_hot << std::endl;
 
     my_gps->Disconnect();
     StopLoggingData();
