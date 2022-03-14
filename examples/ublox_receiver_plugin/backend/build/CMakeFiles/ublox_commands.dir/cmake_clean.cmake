@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o.d"
   "CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o"
   "CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o.d"
+  "CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o"
+  "CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o.d"
   "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o"
   "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o.d"
   "libublox_commands.a"

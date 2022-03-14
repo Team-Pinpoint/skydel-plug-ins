@@ -139,13 +139,28 @@ CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getConfigurationCommand.cpp -o CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.s
 
+CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o: CMakeFiles/ublox_commands.dir/flags.make
+CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o: ../src/commands/getPositionCommand.cpp
+CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o: CMakeFiles/ublox_commands.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o -MF CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o.d -o CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o -c /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getPositionCommand.cpp
+
+CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getPositionCommand.cpp > CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.i
+
+CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getPositionCommand.cpp -o CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.s
+
 # Object files for target ublox_commands
 ublox_commands_OBJECTS = \
 "CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/CreateUbloxReceiver.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o" \
-"CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o"
+"CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o" \
+"CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o"
 
 # External object files for target ublox_commands
 ublox_commands_EXTERNAL_OBJECTS =
@@ -155,9 +170,10 @@ libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/CreateUbloxRecei
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o
+libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/build.make
 libublox_commands.a: CMakeFiles/ublox_commands.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libublox_commands.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libublox_commands.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/ublox_commands.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ublox_commands.dir/link.txt --verbose=$(VERBOSE)
 

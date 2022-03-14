@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/StartCommand.cpp" "CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o" "gcc" "CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o.d"
   "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/currentFixCommand.cpp" "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o" "gcc" "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o.d"
   "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getConfigurationCommand.cpp" "CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o" "gcc" "CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o.d"
+  "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getPositionCommand.cpp" "CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o" "gcc" "CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o.d"
   "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/timeCommand.cpp" "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o" "gcc" "CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o.d"
   )
 
