@@ -9,6 +9,7 @@
 #include "currentFixCommand.h"
 #include "timeCommand.h"
 #include "getConfigurationCommand.h"
+#include "getPositionCommand.h"
 
 // #include "boost/filesystem.hpp"
 
@@ -77,6 +78,11 @@ int main(int argc, char **argv)
     GetConfigurationCommand getconfig(my_gps);
     getconfig.execute();
 
+    GetPositionCommand getposition(my_gps);
+    getposition.execute();
+
+    UTCTimeCommand gettime(my_gps);
+    gettime.execute();
     // UTCTimeCommand timeCommand(my_gps);
     // timeCommand.execute();
     //comand test

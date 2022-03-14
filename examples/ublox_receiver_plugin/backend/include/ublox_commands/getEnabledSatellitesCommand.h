@@ -2,15 +2,15 @@
 #include "ublox.h"
 #include <iostream>
 
-class GetConfigurationCommand: public Command{
+class GetEnabledSatellitesCommand: public Command{
     public:
-        GetConfigurationCommand(ublox::Ublox *recv = 0): Command(recv){};
-        ~GetConfigurationCommand(){};
+        GetEnabledSatellitesCommand(ublox::Ublox *recv = 0): Command(recv){};
+        ~GetEnabledSatellitesCommand(){};
         void execute();
         static void GetConfigurationCallback(ublox::CfgGNSS gnss_config, double time_stamp){
             try{
                 std::cout << "" << std::endl;
-                std::cout << "GNSS settings Command" << std::endl;
+                std::cout << "GNSS settings Command hry " << std::endl;
                 std::cout << unsigned(gnss_config.msgVer) << std::endl;
                 std::cout << unsigned(gnss_config.numTrkChHw) << std::endl;
                 std::cout << unsigned(gnss_config.numTrkChUse) << std::endl;
@@ -26,7 +26,7 @@ class GetConfigurationCommand: public Command{
                     std::cout << std::bitset<32>(block.flags) << std::endl;
                     std::cout << "----" << std::endl;
                 }
-                GetConfigurationCommand::pulled = true;
+                GetEnabledSatellitesCommand::pulled = true;
             }
             catch(std::exception &e){
                 std::cout << "PseudorangeData() error";

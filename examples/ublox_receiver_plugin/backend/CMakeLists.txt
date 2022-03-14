@@ -6,7 +6,8 @@ set(UBLOX_COMMAND_SRCS src/commands/StartCommand.cpp
                        src/commands/CreateUbloxReceiver.cpp
                        src/commands/currentFixCommand.cpp
                        src/commands/timeCommand.cpp
-                       src/commands/getConfigurationCommand.cpp)
+                       src/commands/getConfigurationCommand.cpp
+                       src/commands/getPositionCommand.cpp)
 
 # Find Boost, if it hasn't already been found
 #set(Boost_USE_STATIC_LIBS ON)
