@@ -4,6 +4,7 @@
 
 #include "command.h"
 #include "createReceiverCommand.h"
+#include "currentFixCommand.h"
 #include "receiver_enums.h"
 #include "startCommand.h"
 #include "ublox.h"
@@ -23,33 +24,61 @@ QJsonObject UbloxReceiverPlugin::getConfiguration() const
 
 QWidget* UbloxReceiverPlugin::createUI()
 {
-  this->view = new UbloxReceiverView;
+  m_view = new UbloxReceiverView;
 
-  connect(view->connectReceiverView, &ConnectReceiverView::connectReceiver, [this]() {
-    m_skydelNotifier->notify("Connecting to the Ublox receiver");
-    // TODO: port is currently hardcoded... need to put code into CreateUbloxReceiver.cpp to find a port
-    // with a ublox receiver. Also need to change the ui (should ask for the baud rate but not the port) 
-    CreateUbloxReceiverCommand command(9600, "/dev/ttyACM0");
-    ubloxReceiver = command.execute();
-    view->startReceiverView->setReceiverStatus(ReceiverStatus::INACTIVE);
+  connect(m_view, &UbloxReceiverView::connectReceiver, [this](int baudRate) { m_connectReceiver(baudRate); });
+
+  connect(m_view, &UbloxReceiverView::disconnectReceiver, this, &UbloxReceiverPlugin::m_disconnectReceiver);
+
+  connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
+    m_startReceiver(startType);
   });
 
-  connect(view->startReceiverView, &StartReceiverView::startClicked, [this](ReceiverStartType startType) {
-    view->startReceiverView->setReceiverStatus(ReceiverStatus::STARTING);
-    m_skydelNotifier->notify("Starting the Ublox receiver");
-    boost::thread startThread([this, startType]() {
-      ReceiverStartCommand command(this->ubloxReceiver);
-      command.execute(startType);
-      this->view->startReceiverView->setReceiverStatus(ReceiverStatus::ACTIVE);
-    });
-    startThread.detach();
+  boost::thread statusThread([this]() {
+    while (true)
+    {
+      m_ubloxMutex.lock();
+      ReceiverGetFixCommand command(m_ubloxReceiver);
+      m_view->setReceiverStatus(command.execute());
+      m_ubloxMutex.unlock();
+      usleep(1000000); // check the status every 1 second
+    }
   });
+  statusThread.detach();
 
-  // TODO: add a disconnect butten which calls ubloxReceiver.Disconnect();
-  // we may need to remove the connect receiver popup ui for this as well
+  return m_view;
+}
 
-  // TODO: could start a thread which goes into a while loop and keeps checking the status of
-  // the ubloxReceiver and updating the frontend status (need to add something to ublox.h)
+void UbloxReceiverPlugin::m_connectReceiver(int baudRate)
+{
+  m_ubloxMutex.lock();
+  m_skydelNotifier->notify("Connecting to the Ublox receiver");
+  if (!m_ubloxReceiver)
+  {
+    CreateUbloxReceiverCommand command(baudRate);
+    m_ubloxReceiver = command.execute();
+  }
+  else if (!m_ubloxReceiver->IsConnected())
+  {
+    CreateUbloxReceiverCommand command(baudRate, m_ubloxReceiver);
+    command.execute();
+  }
+  m_ubloxMutex.unlock();
+}
 
-  return view;
+void UbloxReceiverPlugin::m_disconnectReceiver()
+{
+  m_ubloxMutex.lock();
+  m_skydelNotifier->notify("Disconnecting from the Ublox receiver");
+  m_ubloxReceiver->Disconnect();
+  m_ubloxMutex.unlock();
+}
+
+void UbloxReceiverPlugin::m_startReceiver(ReceiverStartType startType)
+{
+  m_ubloxMutex.lock();
+  m_skydelNotifier->notify("Starting the Ublox receiver");
+  ReceiverStartCommand command(m_ubloxReceiver);
+  command.execute(startType);
+  m_ubloxMutex.unlock();
 }

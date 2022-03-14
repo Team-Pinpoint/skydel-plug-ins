@@ -1,15 +1,7 @@
 /* Copyright 2012 William Woodall and John Harrison */
-#ifndef _WIN32
-# include <alloca.h>
-#endif
-
 #include "serial.h"
 
-#ifdef _WIN32
-#include "impl/win.h"
-#else
 #include "impl/unix.h"
-#endif
 
 using std::invalid_argument;
 using std::min;

@@ -9,18 +9,42 @@ class ReceiverGetFixCommand: public Command{
         ~ReceiverGetFixCommand(){};
         static void NavigationStatusCallbackIsFixed(ublox::NavStatus &nav_status, double &time_stamp){
             try{
-                if (nav_status.fixtype == 0x03) {
-                    if(ReceiverGetFixCommand::receiverFixCycles == 3){
-                        ReceiverGetFixCommand::receiverFix = true;
-                    }
+                std::cout << "GPS Fix Type: "<< std::endl;
+                if (nav_status.fixtype == 0x00) {
+                    std::cout << "No Fix" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::NO_FIX;
+                    ReceiverGetFixCommand::receiverFix = true;
+                } else if (nav_status.fixtype == 0x01) {
+                    std::cout << "Dead Reckoning Only" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::FIX_1D;
+                    ReceiverGetFixCommand::receiverFix = true;
+                } else if (nav_status.fixtype == 0x02) {
+                    std::cout << "2D Fix" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::FIX_2D;
+                    ReceiverGetFixCommand::receiverFix = true;
+                } else if (nav_status.fixtype == 0x03) {
+                    std::cout << "3D Fix" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::FIX_3D;
+                    ReceiverGetFixCommand::receiverFix = true;
+                } else if (nav_status.fixtype == 0x04) {
+                    std::cout << "GPS + Dead Reckoning" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::GPS_AND_DEAD_RECKONING;
+                    ReceiverGetFixCommand::receiverFix = true;
+                } else if (nav_status.fixtype == 0x05) {
+                    std::cout << "Time Only" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::TIME_ONLY;
+                    ReceiverGetFixCommand::receiverFix = true;
+                } else {
+                    std::cout << "Unhandled Fix Type Returned" << std::endl;
+                    ReceiverGetFixCommand::receiverStatus = ReceiverStatus::NO_FIX;
+                    ReceiverGetFixCommand::receiverFix = true;
                 }
-                ReceiverGetFixCommand::receiverFixCycles ++;
             } catch (std::exception &e) {
                 std::cout << "PseudorangeData() error";
             }    
         }
-        bool execute();
+        ReceiverStatus execute();
     protected:
+        static ReceiverStatus receiverStatus;
         static bool receiverFix;
-        static int receiverFixCycles;
 };

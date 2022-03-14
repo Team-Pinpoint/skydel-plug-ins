@@ -390,9 +390,9 @@ bool Ublox::Ping(int num_attempts) {
 
 void Ublox::Disconnect() {
 	try {
+		is_connected_ = false;
 		if (reading_status_) {
 			StopReading();
-			// TODO: wait here for reading to stop
 		}
 		if (serial_port_ != NULL) {
 			if (serial_port_->isOpen())

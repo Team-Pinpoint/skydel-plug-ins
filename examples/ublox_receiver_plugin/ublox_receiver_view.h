@@ -3,15 +3,12 @@
 
 #include <QWidget>
 
-#include "connect_receiver_view.h"
-#include "start_receiver_view.h"
+#include "receiver_enums.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui
 {
 class UbloxReceiverView;
 }
-QT_END_NAMESPACE
 
 class UbloxReceiverView : public QWidget
 {
@@ -20,10 +17,18 @@ class UbloxReceiverView : public QWidget
 public:
   UbloxReceiverView(QWidget* parent = nullptr);
   ~UbloxReceiverView();
-  StartReceiverView* startReceiverView;
-  ConnectReceiverView* connectReceiverView;
+  void setReceiverStatus(ReceiverStatus status);
+
+signals:
+  void connectReceiver(int baudRate);
+  void disconnectReceiver();
+  void startClicked(ReceiverStartType startType);
 
 private:
-  Ui::UbloxReceiverView* ui;
+  Ui::UbloxReceiverView* m_ui;
+  ReceiverStatus m_receiverStatus;
+  ReceiverStartType m_selectedStartType;
+  void m_startTypeIndexChanged(int index);
+  void m_connectReceiverClicked();
 };
 #endif // UBLOXRECEIVERVIEW_H

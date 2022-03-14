@@ -33,6 +33,9 @@ jobs:
       - name: Install uuid-dev
         run: sudo apt-get install uuid-dev
 
+      - name: Install boost
+        run: sudo apt-get install libboost-all-dev
+
       - name: Install blaze 
         run: |
           git clone https://github.com/parsa/blaze 
