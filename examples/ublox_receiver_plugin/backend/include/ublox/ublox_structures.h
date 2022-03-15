@@ -45,6 +45,7 @@ namespace ublox {
     #define MSG_ID_CFG_EKF 0x12
     #define MSG_ID_CFG_ESFGWT 0x29
     #define MSG_ID_CFG_FXN 0x0E
+    #define MSG_ID_CFG_GNSS 0x3E
     #define MSG_ID_CFG_ITFM 0x39
     #define MSG_ID_CFG_MSG 0x01
     #define MSG_ID_CFG_NAV5 0x24
@@ -271,6 +272,26 @@ PACK(
 
 });
 
+PACK(
+    struct CfgGNSSBlock {
+        uint8_t gnssId;
+        uint8_t resTrkCh;
+        uint8_t maxTrkCh;
+        uint8_t reserved1;
+        int32_t flags;
+    }
+);
+PACK(
+    struct CfgGNSS {
+        UbloxHeader header;
+        uint8_t msgVer;
+        uint8_t numTrkChHw;
+        uint8_t numTrkChUse;
+        uint8_t numConfigBlocks;
+        CfgGNSSBlock gnss_blocks[8]; //TODO confirm length
+    }
+);
+
 /*!
 * NAV-SOL Message Structure
 * This message combines Position, velocity and
@@ -401,6 +422,57 @@ PACK(
         int16_t week;   // GPS week
         int8_t leapsecs;// GPS UTC leap seconds
         uint8_t valid;  // validity flags
+        uint32_t tacc;  // time accuracy measurement (nanosecs)
+        uint8_t checksum[2];
+});
+/*!
+* NAV-TIMEGLO Message Structure
+* This message outputs GLONASS Time information
+* ID: 0x01  0x23  Payload Length= 20 bytes
+*/
+PACK(
+    struct NavGLOTime{
+        UbloxHeader header;
+        uint32_t iTOW;  // GPS ms time of week
+        uint32_t tod;   // 
+        int32_t ftod;
+        uint16_t Nt;
+        uint8_t N4;
+        uint8_t valid;  // validity flags
+        uint32_t tacc;  // time accuracy measurement (nanosecs)
+        uint8_t checksum[2];
+});
+/*!
+* NAV-TIMEGAL Message Structure
+* This message outputs GLONASS Time information
+* ID: 0x01  0x25  Payload Length= 20 bytes
+*/
+PACK(
+    struct NavGALTime{
+        UbloxHeader header;
+        uint32_t iTOW;  // GPS ms time of week
+        uint32_t galTow;   // 
+        int32_t fGalTow;
+        uint16_t galWno;
+        uint8_t leapS;
+        int8_t valid;  // validity flags
+        uint32_t tacc;  // time accuracy measurement (nanosecs)
+        uint8_t checksum[2];
+});
+/*!
+* NAV-TIMEGAL Message Structure
+* This message outputs GLONASS Time information
+* ID: 0x01  0x25  Payload Length= 20 bytes
+*/
+PACK(
+    struct NavBDSTime{
+        UbloxHeader header;
+        uint32_t iTOW;  // GPS ms time of week
+        uint32_t SOW;   // 
+        int32_t fSOW;
+        uint16_t week;
+        uint8_t leapS;
+        int8_t valid;  // validity flags
         uint32_t tacc;  // time accuracy measurement (nanosecs)
         uint8_t checksum[2];
 });
@@ -755,6 +827,7 @@ enum Message_ID
 {
     CFG_PRT = 1536,                 // (ID 0x06 0x00) I/O Protocol Settings
     CFG_NAV5 = 1572,                // (ID 0x06 0x24) Navigation Algorithm Parameter Settings
+    CFG_GNSS = 1598,                // (ID 0x06 0x3E) Configure GNSS 
     NAV_STATUS = 259,               // (ID 0x01 0x03) TTFF, GPS Fix type, time since startup/reset
     NAV_SOL = 262,                  // (ID 0x01 0x06) ECEF Pos,Vel, TOW, Accuracy,
     NAV_VELNED = 274,               // (ID 0x01 0x12) Vel (North, East, Down), Speed, Ground Speed
