@@ -1,5 +1,4 @@
 set(SERIAL_SCRS src/impl/unix.cc
-                src/impl/win.cc 
                 src/serial.cc)
 set(UBLOX_SRCS src/ublox.cpp)
 set(UBLOX_COMMAND_SRCS src/commands/StartCommand.cpp

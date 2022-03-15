@@ -363,21 +363,8 @@ CMakeFiles/serial.dir/src/impl/unix.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__split_buffer
  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/serial/v8stdint.h
 
-CMakeFiles/serial.dir/src/impl/win.o
- /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/win.cc
-
 CMakeFiles/serial.dir/src/serial.o
  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/serial.cc
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/alloca.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/cdefs.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_symbol_aliasing.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_posix_availability.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/_types.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/machine/_types.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/arm/_types.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_pthread/_pthread_types.h
- /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_size_t.h
  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/serial/serial.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/limits
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/__config
@@ -393,10 +380,19 @@ CMakeFiles/serial.dir/src/serial.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/wchar.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stddef.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/wchar.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/_types.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/cdefs.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_symbol_aliasing.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_posix_availability.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/machine/_types.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/arm/_types.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_pthread/_pthread_types.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/Availability.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/AvailabilityVersions.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/AvailabilityInternal.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_null.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_size_t.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_mbstate_t.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/machine/types.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/arm/types.h
@@ -489,6 +485,7 @@ CMakeFiles/serial.dir/src/serial.o
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/libkern/_OSByteOrder.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/libkern/arm/OSByteOrder.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/arm/arch.h
+ /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/alloca.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/malloc/_malloc.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_dev_t.h
  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_mode_t.h

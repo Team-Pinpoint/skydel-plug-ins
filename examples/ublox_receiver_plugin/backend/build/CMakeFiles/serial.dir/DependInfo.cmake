@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/unix.cc" "CMakeFiles/serial.dir/src/impl/unix.o" "gcc" "CMakeFiles/serial.dir/src/impl/unix.o.d"
-  "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/win.cc" "CMakeFiles/serial.dir/src/impl/win.o" "gcc" "CMakeFiles/serial.dir/src/impl/win.o.d"
   "/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/serial.cc" "CMakeFiles/serial.dir/src/serial.o" "gcc" "CMakeFiles/serial.dir/src/serial.o.d"
   )
 

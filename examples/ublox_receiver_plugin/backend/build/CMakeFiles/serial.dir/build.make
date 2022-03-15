@@ -83,24 +83,10 @@ CMakeFiles/serial.dir/src/impl/unix.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serial.dir/src/impl/unix.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/unix.cc -o CMakeFiles/serial.dir/src/impl/unix.s
 
-CMakeFiles/serial.dir/src/impl/win.o: CMakeFiles/serial.dir/flags.make
-CMakeFiles/serial.dir/src/impl/win.o: ../src/impl/win.cc
-CMakeFiles/serial.dir/src/impl/win.o: CMakeFiles/serial.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/serial.dir/src/impl/win.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/serial.dir/src/impl/win.o -MF CMakeFiles/serial.dir/src/impl/win.o.d -o CMakeFiles/serial.dir/src/impl/win.o -c /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/win.cc
-
-CMakeFiles/serial.dir/src/impl/win.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/serial.dir/src/impl/win.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/win.cc > CMakeFiles/serial.dir/src/impl/win.i
-
-CMakeFiles/serial.dir/src/impl/win.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/serial.dir/src/impl/win.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/impl/win.cc -o CMakeFiles/serial.dir/src/impl/win.s
-
 CMakeFiles/serial.dir/src/serial.o: CMakeFiles/serial.dir/flags.make
 CMakeFiles/serial.dir/src/serial.o: ../src/serial.cc
 CMakeFiles/serial.dir/src/serial.o: CMakeFiles/serial.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/serial.dir/src/serial.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/serial.dir/src/serial.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/serial.dir/src/serial.o -MF CMakeFiles/serial.dir/src/serial.o.d -o CMakeFiles/serial.dir/src/serial.o -c /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/serial.cc
 
 CMakeFiles/serial.dir/src/serial.i: cmake_force
@@ -114,18 +100,16 @@ CMakeFiles/serial.dir/src/serial.s: cmake_force
 # Object files for target serial
 serial_OBJECTS = \
 "CMakeFiles/serial.dir/src/impl/unix.o" \
-"CMakeFiles/serial.dir/src/impl/win.o" \
 "CMakeFiles/serial.dir/src/serial.o"
 
 # External object files for target serial
 serial_EXTERNAL_OBJECTS =
 
 libserial.a: CMakeFiles/serial.dir/src/impl/unix.o
-libserial.a: CMakeFiles/serial.dir/src/impl/win.o
 libserial.a: CMakeFiles/serial.dir/src/serial.o
 libserial.a: CMakeFiles/serial.dir/build.make
 libserial.a: CMakeFiles/serial.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libserial.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libserial.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/serial.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serial.dir/link.txt --verbose=$(VERBOSE)
 

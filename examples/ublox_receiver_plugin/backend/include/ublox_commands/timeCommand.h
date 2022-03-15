@@ -19,6 +19,9 @@ class UTCTimeCommand: public Command{
                 std::cout << unsigned(nav_utc_time.sec) << std::endl;
                 std::cout << unsigned(nav_utc_time.tacc) << std::endl;
                 std::cout << nav_utc_time.valid << std::endl;
+                char buffer[100];
+                int cx = snprintf(buffer, 100, "%d/%d/%d",unsigned(nav_utc_time.day),unsigned(nav_utc_time.month),nav_utc_time.year);
+                std::cout << buffer << std:enl;
                 UTCTimeCommand::pulled_time = true;
             }
             catch(std::exception &e){

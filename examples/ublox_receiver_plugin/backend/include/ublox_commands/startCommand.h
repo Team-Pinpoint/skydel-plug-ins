@@ -8,6 +8,13 @@ class ReceiverStartCommand: public Command{
         ReceiverStartCommand(ublox::Ublox *recv = 0): Command(recv){};
         ~ReceiverStartCommand(){};
         void execute(ReceiverStartType startType);
+        enum class ReceiverStartType
+        {
+        NONE = 0,
+        COLD = 1,
+        WARM = 2,
+        HOT = 3
+        };
     protected:
         static bool receiver_reset;
 };
