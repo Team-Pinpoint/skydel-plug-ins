@@ -56,24 +56,16 @@ int main(int argc, char **argv)
     std::string port(argv[1]);
     int baudrate=115200;
     istringstream(argv[2]) >> baudrate;
-    CreateUbloxReceiverCommand createReciever(9600,"/dev/tty.usbmodem101");
+    //create receiver
+    CreateUbloxReceiverCommand createReciever;
     my_gps = createReciever.execute();
-    // Connect to Receiver
-    // bool result = my_gps.Connect(port,baudrate);
-    //     if (result) {
-    //         cout << "Successfully connected." << endl;
-    //     }
-    //     else {
-    //         cout << "Failed to connect." << endl;
-    //         return -1;
-    //     }
 
     //! Start Data Logging
     bool logging_on = StartDataLogging("range_data.log");
 
     ReceiverGetFixCommand getcurfix(my_gps);
-    bool fix = getcurfix.execute();
-    std::cerr << "Is fixed " << fix << std::endl;
+    ReceiverStatus fix = getcurfix.execute();
+    // std::cout << "Is fixed " << fix << std::endl;
 
     GetConfigurationCommand getconfig(my_gps);
     getconfig.execute();
