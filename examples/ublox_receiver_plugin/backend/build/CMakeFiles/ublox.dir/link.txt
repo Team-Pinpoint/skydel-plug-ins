@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libublox.a CMakeFiles/ublox.dir/src/ublox.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libublox.a
