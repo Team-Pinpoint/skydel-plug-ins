@@ -111,19 +111,19 @@ CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/currentFixCommand.cpp -o CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.s
 
-CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o: CMakeFiles/ublox_commands.dir/flags.make
-CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o: ../src/commands/timeCommand.cpp
-CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o: CMakeFiles/ublox_commands.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o -MF CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o.d -o CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o -c /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/timeCommand.cpp
+CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o: CMakeFiles/ublox_commands.dir/flags.make
+CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o: ../src/commands/getTimeCommand.cpp
+CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o: CMakeFiles/ublox_commands.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o -MF CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o.d -o CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o -c /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getTimeCommand.cpp
 
-CMakeFiles/ublox_commands.dir/src/commands/timeCommand.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ublox_commands.dir/src/commands/timeCommand.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/timeCommand.cpp > CMakeFiles/ublox_commands.dir/src/commands/timeCommand.i
+CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getTimeCommand.cpp > CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.i
 
-CMakeFiles/ublox_commands.dir/src/commands/timeCommand.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ublox_commands.dir/src/commands/timeCommand.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/timeCommand.cpp -o CMakeFiles/ublox_commands.dir/src/commands/timeCommand.s
+CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getTimeCommand.cpp -o CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.s
 
 CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o: CMakeFiles/ublox_commands.dir/flags.make
 CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o: ../src/commands/getConfigurationCommand.cpp
@@ -158,7 +158,7 @@ ublox_commands_OBJECTS = \
 "CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/CreateUbloxReceiver.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o" \
-"CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o" \
+"CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o" \
 "CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o"
 
@@ -168,7 +168,7 @@ ublox_commands_EXTERNAL_OBJECTS =
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/StartCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/CreateUbloxReceiver.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/currentFixCommand.o
-libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/timeCommand.o
+libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/getConfigurationCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/src/commands/getPositionCommand.o
 libublox_commands.a: CMakeFiles/ublox_commands.dir/build.make

@@ -1,5 +1,7 @@
-CMakeFiles/command_example.dir/examples/command_example.o: \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/examples/command_example.cpp \
+CMakeFiles/ublox_commands.dir/src/commands/getTimeCommand.o: \
+  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/src/commands/getTimeCommand.cpp \
+  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/getTimeCommand.h \
+  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/command.h \
   /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox/ublox.h \
   /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox/ublox_structures.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/stdint.h \
@@ -424,6 +426,7 @@ CMakeFiles/command_example.dir/examples/command_example.o: \
   /opt/homebrew/include/boost/thread/pthread/thread_data.hpp \
   /opt/homebrew/include/boost/thread/detail/config.hpp \
   /opt/homebrew/include/boost/thread/detail/thread_safety.hpp \
+  /opt/homebrew/include/boost/config/auto_link.hpp \
   /opt/homebrew/include/boost/thread/exceptions.hpp \
   /opt/homebrew/include/boost/system/system_error.hpp \
   /opt/homebrew/include/boost/system/error_code.hpp \
@@ -1225,13 +1228,4 @@ CMakeFiles/command_example.dir/examples/command_example.o: \
   /opt/homebrew/include/boost/thread/executors/generic_executor_ref.hpp \
   /opt/homebrew/include/boost/thread/detail/atomic_undef_macros.hpp \
   /opt/homebrew/include/boost/thread/detail/atomic_redef_macros.hpp \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iostream \
-  /opt/homebrew/include/boost/bind.hpp \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/createReceiverCommand.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/command.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/startCommand.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/receiver_enums.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/currentFixCommand.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/getTimeCommand.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/getConfigurationCommand.h \
-  /Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/include/ublox_commands/getPositionCommand.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/c++/v1/iostream

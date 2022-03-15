@@ -4,7 +4,7 @@ set(UBLOX_SRCS src/ublox.cpp)
 set(UBLOX_COMMAND_SRCS src/commands/StartCommand.cpp
                        src/commands/CreateUbloxReceiver.cpp
                        src/commands/currentFixCommand.cpp
-                       src/commands/timeCommand.cpp
+                       src/commands/getTimeCommand.cpp
                        src/commands/getConfigurationCommand.cpp
                        src/commands/getPositionCommand.cpp)
 

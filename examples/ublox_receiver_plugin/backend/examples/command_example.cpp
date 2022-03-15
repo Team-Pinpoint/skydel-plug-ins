@@ -7,7 +7,7 @@
 #include "createReceiverCommand.h"
 #include "startCommand.h"
 #include "currentFixCommand.h"
-#include "timeCommand.h"
+#include "getTimeCommand.h"
 #include "getConfigurationCommand.h"
 #include "getPositionCommand.h"
 
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
     GetPositionCommand getposition(my_gps);
     getposition.execute();
 
-    UTCTimeCommand gettime(my_gps);
+    GetUTCTimeCommand gettime(my_gps);
     gettime.execute();
     // UTCTimeCommand timeCommand(my_gps);
     // timeCommand.execute();

@@ -1234,7 +1234,7 @@ CMakeFiles/command_example.dir/examples/command_example.o: ../examples/command_e
   ../include/ublox_commands/startCommand.h \
   ../include/ublox_commands/receiver_enums.h \
   ../include/ublox_commands/currentFixCommand.h \
-  ../include/ublox_commands/timeCommand.h \
+  ../include/ublox_commands/getTimeCommand.h \
   ../include/ublox_commands/getConfigurationCommand.h \
   ../include/ublox_commands/getPositionCommand.h
 
@@ -2809,6 +2809,8 @@ CMakeFiles/command_example.dir/examples/command_example.o: ../examples/command_e
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_posix_vdisable.h:
 
+../include/ublox_commands/getTimeCommand.h:
+
 /opt/homebrew/include/boost/type_traits/detail/is_mem_fun_pointer_impl.hpp:
 
 /opt/homebrew/include/boost/date_time/time_system_split.hpp:
@@ -3656,8 +3658,6 @@ CMakeFiles/command_example.dir/examples/command_example.o: ../examples/command_e
 /opt/homebrew/include/boost/mpl/aux_/config/workaround.hpp:
 
 /opt/homebrew/include/boost/checked_delete.hpp:
-
-../include/ublox_commands/timeCommand.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include/sys/_types/_ino_t.h:
 
