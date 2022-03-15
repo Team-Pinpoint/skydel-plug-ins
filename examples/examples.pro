@@ -10,5 +10,10 @@ SUBDIRS += \
     simple_plugin \
     transmitter_observer_plugin
 
+unix {
+  SUBDIRS += \
+      ublox_receiver_plugin
+}
+
 imu_plugin.depends = library
 rapi_plugin.depends = library

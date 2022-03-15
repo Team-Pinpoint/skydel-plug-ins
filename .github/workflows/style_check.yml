@@ -16,7 +16,7 @@ jobs:
         path:
           - check: 'include'
           - check: 'examples'
-            exclude: '(sdx_api)'
+            exclude: '(sdx_api|ublox_receiver_plugin\/backend)'
     steps:
     - uses: actions/checkout@v2
       with:
