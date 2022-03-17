@@ -5,11 +5,11 @@
 void ReceiverStartCommand::execute(ReceiverStartType startType){
     if (receiver && receiver->IsConnected()) {
         switch (startType) {
-            case ReceiverStartType::HOT:
+            case ReceiverStartCommand::ReceiverStartType::HOT:
                 std::cout << "Hot Starting Receiver" << std::endl;
                 (receiver -> ResetToHotStart)();
                 break;
-            case ReceiverStartType::WARM:
+            case ReceiverStartCommand::ReceiverStartType::WARM:
                 std::cout << "Warm Starting Receiver" << std::endl;
                 (receiver -> ResetToWarmStart)();
                 break;
