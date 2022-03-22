@@ -36,6 +36,7 @@ private:
   void m_connectReceiver(int baudRate);
   void m_disconnectReceiver();
   void m_startReceiver(ReceiverStartType startType);
+  void m_updateData();
 };
 
 // Required boilerplate

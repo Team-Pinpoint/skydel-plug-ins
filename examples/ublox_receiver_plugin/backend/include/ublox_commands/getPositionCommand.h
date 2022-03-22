@@ -12,7 +12,7 @@ class GetPositionCommand: public Command{
             GetPositionCommand::pulled = true;
             memcpy(GetPositionCommand::position_string,buffer,100);
         }
-        void execute();
+        char* execute();
     protected:
         static bool pulled;
         static char position_string[100];

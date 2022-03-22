@@ -5,6 +5,8 @@
 #include "command.h"
 #include "createReceiverCommand.h"
 #include "currentFixCommand.h"
+#include "getPositionCommand.h"
+#include "getTimeCommand.h"
 #include "receiver_enums.h"
 #include "startCommand.h"
 #include "ublox.h"
@@ -33,6 +35,8 @@ QWidget* UbloxReceiverPlugin::createUI()
   connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
     m_startReceiver(startType);
   });
+
+  connect(m_view, &UbloxReceiverView::updateDataClicked, this, &UbloxReceiverPlugin::m_updateData);
 
   boost::thread statusThread([this]() {
     while (true)
@@ -80,5 +84,20 @@ void UbloxReceiverPlugin::m_startReceiver(ReceiverStartType startType)
   m_skydelNotifier->notify("Starting the Ublox receiver");
   ReceiverStartCommand command(m_ubloxReceiver);
   command.execute(startType);
+  m_ubloxMutex.unlock();
+}
+
+void UbloxReceiverPlugin::m_updateData()
+{
+  m_ubloxMutex.lock();
+
+  m_skydelNotifier->notify("Retrieving Position from the Ublox receiver");
+  GetPositionCommand positionCommand(m_ubloxReceiver);
+  m_view->setPosition(positionCommand.execute());
+
+  m_skydelNotifier->notify("Retrieving UTC Time from the Ublox receiver");
+  GetUTCTimeCommand timeCommand(m_ubloxReceiver);
+  m_view->setUTCTime(timeCommand.execute());
+
   m_ubloxMutex.unlock();
 }

@@ -21,6 +21,8 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
           &UbloxReceiverView::m_startTypeIndexChanged);
 
   connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::m_connectReceiverClicked);
+
+  connect(m_ui->updateDataButton, &QPushButton::clicked, this, &UbloxReceiverView::updateDataClicked);
 }
 
 UbloxReceiverView::~UbloxReceiverView()
@@ -76,6 +78,16 @@ void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
       m_ui->receiverStatusLabel->setText("[No Fix]");
       break;
   }
+}
+
+void UbloxReceiverView::setPosition(char* position)
+{
+  m_ui->positionValueLabel->setText(position);
+}
+
+void UbloxReceiverView::setUTCTime(char* time)
+{
+  m_ui->timeValueLabel->setText(time);
 }
 
 void UbloxReceiverView::m_startTypeIndexChanged(int index)
