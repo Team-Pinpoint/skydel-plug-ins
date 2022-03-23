@@ -14,8 +14,5 @@ char* GetPositionCommand::execute(){
         }
         std::cout << GetPositionCommand::position_string << std::endl;
     }
-    if (GetPositionCommand::position_string[0] == '\0') {
-      return (char *) "N/A";
-    }
     return GetPositionCommand::position_string;
 };

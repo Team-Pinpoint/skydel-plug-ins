@@ -18,14 +18,12 @@ public:
   UbloxReceiverView(QWidget* parent = nullptr);
   ~UbloxReceiverView();
   void setReceiverStatus(ReceiverStatus status);
-  void setPosition(char* position);
-  void setUTCTime(char* time);
+  void displayPositionAndTime(char* position, char* time);
 
 signals:
   void connectReceiver(int baudRate);
   void disconnectReceiver();
   void startClicked(ReceiverStartType startType);
-  void updateDataClicked();
 
 private:
   Ui::UbloxReceiverView* m_ui;

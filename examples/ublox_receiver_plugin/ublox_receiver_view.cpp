@@ -2,6 +2,7 @@
 
 #include "receiver_enums.h"
 #include "ui_ublox_receiver_view.h"
+#include <string.h>
 
 UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
   QWidget(parent),
@@ -21,8 +22,6 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
           &UbloxReceiverView::m_startTypeIndexChanged);
 
   connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::m_connectReceiverClicked);
-
-  connect(m_ui->updateDataButton, &QPushButton::clicked, this, &UbloxReceiverView::updateDataClicked);
 }
 
 UbloxReceiverView::~UbloxReceiverView()
@@ -80,14 +79,11 @@ void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
   }
 }
 
-void UbloxReceiverView::setPosition(char* position)
+void UbloxReceiverView::displayPositionAndTime(char* position, char* time)
 {
-  m_ui->positionValueLabel->setText(position);
-}
-
-void UbloxReceiverView::setUTCTime(char* time)
-{
-  m_ui->timeValueLabel->setText(time);
+  strcat(time, "\t");
+  strcat(time, position);
+  m_ui->dataListWidget->addItem(time);
 }
 
 void UbloxReceiverView::m_startTypeIndexChanged(int index)

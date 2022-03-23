@@ -36,8 +36,6 @@ QWidget* UbloxReceiverPlugin::createUI()
     m_startReceiver(startType);
   });
 
-  connect(m_view, &UbloxReceiverView::updateDataClicked, this, &UbloxReceiverPlugin::m_updateData);
-
   boost::thread statusThread([this]() {
     while (true)
     {
@@ -49,6 +47,15 @@ QWidget* UbloxReceiverPlugin::createUI()
     }
   });
   statusThread.detach();
+
+  boost::thread dataThread([this]() {
+    while (true)
+    {
+      m_updateData();
+      usleep(3000000); // update the data every 3 seconds
+    }
+  });
+  dataThread.detach();
 
   return m_view;
 }
@@ -93,11 +100,16 @@ void UbloxReceiverPlugin::m_updateData()
 
   m_skydelNotifier->notify("Retrieving Position from the Ublox receiver");
   GetPositionCommand positionCommand(m_ubloxReceiver);
-  m_view->setPosition(positionCommand.execute());
+  char* position = positionCommand.execute();
 
   m_skydelNotifier->notify("Retrieving UTC Time from the Ublox receiver");
   GetUTCTimeCommand timeCommand(m_ubloxReceiver);
-  m_view->setUTCTime(timeCommand.execute());
+  char* time = timeCommand.execute();
+
+  if (time[0] != '\0' && position[0] != '\0')
+  {
+    m_view->displayPositionAndTime(position, time);
+  }
 
   m_ubloxMutex.unlock();
 }
