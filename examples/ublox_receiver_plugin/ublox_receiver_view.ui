@@ -6,318 +6,304 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
+    <width>1000</width>
     <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>UbloxReceiverView</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="3">
-    <spacer name="horizontalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>25</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="4">
-    <widget class="QComboBox" name="startTypeSelect">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <item>
-      <property name="text">
-       <string>Select Start Type</string>
+  <widget class="QWidget" name="headerWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="13">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Cold</string>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>0</width>
+        <height>20</height>
+       </size>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Warm</string>
+     </spacer>
+    </item>
+    <item row="0" column="8">
+     <widget class="QLabel" name="receiverStatusLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-     </item>
-     <item>
       <property name="text">
-       <string>Hot</string>
+       <string>[Not Connected]</string>
       </property>
-     </item>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="baudRateLabel">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Baud Rate:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QComboBox" name="baudRateSelect">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="currentIndex">
-      <number>3</number>
-     </property>
-     <item>
+     </widget>
+    </item>
+    <item row="0" column="7">
+     <widget class="QLabel" name="receiverLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="text">
-       <string>1200</string>
+       <string>U-Blox Receiver Status:</string>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>2400</string>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QComboBox" name="baudRateSelect">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4800</string>
+      <property name="currentIndex">
+       <number>3</number>
       </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>9600</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>19200</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>38400</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>57600</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>115200</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>460800</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="0" column="7">
-    <widget class="QLabel" name="receiverLabel">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>U-Blox Receiver Status:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="8">
-    <widget class="QLabel" name="receiverStatusLabel">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>[Not Connected]</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QPushButton" name="connectReceiverButton">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>100</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>100</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Connect</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="9">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="0">
-    <widget class="QFrame" name="constellationSelectionFrame">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="galileoCheckBox">
-        <property name="text">
-         <string>GALILEO</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>1200</string>
+       </property>
       </item>
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="glonassCheckBox">
-        <property name="text">
-         <string>GLONASS</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>2400</string>
+       </property>
       </item>
-      <item row="7" column="0">
-       <widget class="QPushButton" name="updateConstellationsButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Update</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>4800</string>
+       </property>
       </item>
-      <item row="3" column="0">
-       <widget class="QCheckBox" name="beidouCheckBox">
-        <property name="text">
-         <string>BEIDOU</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>9600</string>
+       </property>
       </item>
-      <item row="0" column="0">
-       <widget class="QCheckBox" name="gpsCheckBox">
-        <property name="text">
-         <string>GPS</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>19200</string>
+       </property>
       </item>
-      <item row="4" column="0">
-       <widget class="QCheckBox" name="sbasCheckBox">
-        <property name="text">
-         <string>SBAS</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>38400</string>
+       </property>
       </item>
-      <item row="5" column="0">
-       <widget class="QCheckBox" name="qzssCheckBox">
-        <property name="text">
-         <string>QZSS</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>57600</string>
+       </property>
       </item>
-      <item row="6" column="0">
-       <widget class="QCheckBox" name="navicCheckBox">
-        <property name="text">
-         <string>NAVIC</string>
-        </property>
-       </widget>
+      <item>
+       <property name="text">
+        <string>115200</string>
+       </property>
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="6">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>25</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="5">
-    <widget class="QPushButton" name="startButton">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Start</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="9">
-    <widget class="QListWidget" name="dataListWidget"/>
-   </item>
-  </layout>
+      <item>
+       <property name="text">
+        <string>460800</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="baudRateLabel">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Baud Rate:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>25</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="4">
+     <widget class="QComboBox" name="startTypeSelect">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <item>
+       <property name="text">
+        <string>Select Start Type</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cold</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Warm</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Hot</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="connectReceiverButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Connect</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5">
+     <widget class="QPushButton" name="startButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>25</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QListWidget" name="dataListWidget">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>50</y>
+     <width>700</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+  </widget>
+  <widget class="QFrame" name="constellationSelectionFrame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>130</width>
+     <height>250</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="constellationsLabel">
+      <property name="text">
+       <string>Constellations</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="constellationListWidget"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="updateConstellationsButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>

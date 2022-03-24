@@ -1,8 +1,11 @@
 #include "ublox_receiver_view.h"
 
+#include <string.h>
+
+#include <QStringList>
+
 #include "receiver_enums.h"
 #include "ui_ublox_receiver_view.h"
-#include <string.h>
 
 UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
   QWidget(parent),
@@ -11,6 +14,8 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
   m_selectedStartType(ReceiverStartType::NONE)
 {
   m_ui->setupUi(this);
+
+  m_constellationSelectionPopupView = new ConstellationSelectionPopupView();
 
   setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
 
@@ -22,6 +27,16 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
           &UbloxReceiverView::m_startTypeIndexChanged);
 
   connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::m_connectReceiverClicked);
+
+  connect(m_ui->updateConstellationsButton,
+          &QPushButton::clicked,
+          m_constellationSelectionPopupView,
+          &ConstellationSelectionPopupView::show);
+
+  connect(m_constellationSelectionPopupView,
+          &ConstellationSelectionPopupView::updateConstellations,
+          this,
+          &UbloxReceiverView::updateConstellationsInBackend);
 }
 
 UbloxReceiverView::~UbloxReceiverView()
@@ -41,18 +56,21 @@ void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
   if (status == ReceiverStatus::NOT_CONNECTED)
   {
     m_ui->connectReceiverButton->setText("Connect");
-    m_ui->baudRateSelect->setDisabled(false);
+    m_ui->baudRateSelect->setEnabled(true);
     m_ui->receiverStatusLabel->setText("[Not Connected]");
-    m_ui->startButton->setDisabled(true);
+    m_ui->startButton->setEnabled(false);
+    m_ui->updateConstellationsButton->setEnabled(false);
+    m_constellationSelectionPopupView->hide();
     return;
   }
 
-  // Updating connect receiver button, baud rate input, and the start button
+  // Updating connect receiver button, baud rate input, update constellations button, and the start button
   m_ui->connectReceiverButton->setText("Disconnect");
-  m_ui->baudRateSelect->setDisabled(true);
+  m_ui->baudRateSelect->setEnabled(false);
+  m_ui->updateConstellationsButton->setEnabled(true);
   if (m_selectedStartType != ReceiverStartType::NONE)
   {
-    m_ui->startButton->setDisabled(false);
+    m_ui->startButton->setEnabled(true);
   }
 
   // Updating the receiver status label
@@ -86,6 +104,42 @@ void UbloxReceiverView::displayPositionAndTime(char* position, char* time)
   m_ui->dataListWidget->addItem(time);
 }
 
+// TODO: use strings instead of enums??
+void UbloxReceiverView::updateConstellationsInView(std::set<Constellation> constellations)
+{
+  m_ui->constellationListWidget->clear();
+  QStringList constellationStrings = {};
+  if (constellations.find(Constellation::GPS) != constellations.end())
+  {
+    constellationStrings.append("GPS");
+  }
+  if (constellations.find(Constellation::GLONASS) != constellations.end())
+  {
+    constellationStrings.append("GLONASS");
+  }
+  if (constellations.find(Constellation::GALILEO) != constellations.end())
+  {
+    constellationStrings.append("GALILEO");
+  }
+  if (constellations.find(Constellation::BEIDOU) != constellations.end())
+  {
+    constellationStrings.append("BEIDOU");
+  }
+  if (constellations.find(Constellation::SBAS) != constellations.end())
+  {
+    constellationStrings.append("SBAS");
+  }
+  if (constellations.find(Constellation::QZSS) != constellations.end())
+  {
+    constellationStrings.append("QZSS");
+  }
+  if (constellations.find(Constellation::NAVIC) != constellations.end())
+  {
+    constellationStrings.append("NAVIC");
+  }
+  m_ui->constellationListWidget->addItems(constellationStrings);
+}
+
 void UbloxReceiverView::m_startTypeIndexChanged(int index)
 {
   m_selectedStartType = (ReceiverStartType)index;
@@ -108,6 +162,7 @@ void UbloxReceiverView::m_connectReceiverClicked()
   }
   else
   {
+    updateConstellationsInView({});
     emit disconnectReceiver();
   }
 }

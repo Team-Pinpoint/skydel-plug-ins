@@ -2,6 +2,8 @@
 
 #include <boost/thread.hpp>
 
+#include <set>
+
 #include "command.h"
 #include "createReceiverCommand.h"
 #include "currentFixCommand.h"
@@ -34,6 +36,11 @@ QWidget* UbloxReceiverPlugin::createUI()
 
   connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
     m_startReceiver(startType);
+  });
+
+  connect(m_view, &UbloxReceiverView::updateConstellationsInBackend, [this](std::set<Constellation> constellations) {
+    // TODO: update constellations in backend then return result of getsattelites command
+    m_view->updateConstellationsInView(constellations);
   });
 
   boost::thread statusThread([this]() {
@@ -74,6 +81,7 @@ void UbloxReceiverPlugin::m_connectReceiver(int baudRate)
     CreateUbloxReceiverCommand command(baudRate, m_ubloxReceiver);
     command.execute();
   }
+  // TODO: call getsattelites command and then m_view->updateConstellationsInView
   m_ubloxMutex.unlock();
 }
 
