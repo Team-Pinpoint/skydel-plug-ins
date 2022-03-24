@@ -5,7 +5,7 @@
 ## Welcome to Team PinPoint's UBlox Receiver Plugin!
 
 ### Important Notes
-Due to a more complex build environment, Team PinPoint's UBlox Receiver plugin only has support for Ubuntu 2020.
+Due to additional build requirements, Team PinPoint's UBlox Receiver plugin only has support for Ubuntu 2020.
 
 ### Pre-compiled
 Check out our release links on the right for a pre-compiled binary.
