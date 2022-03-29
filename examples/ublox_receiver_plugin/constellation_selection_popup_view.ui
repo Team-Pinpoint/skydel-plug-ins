@@ -22,9 +22,9 @@
     </widget>
    </item>
    <item row="6" column="0">
-    <widget class="QCheckBox" name="navicCheckBox">
+    <widget class="QCheckBox" name="imesCheckBox">
      <property name="text">
-      <string>NAVIC</string>
+      <string>IMES</string>
      </property>
     </widget>
    </item>

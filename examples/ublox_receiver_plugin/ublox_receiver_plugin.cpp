@@ -2,11 +2,14 @@
 
 #include <boost/thread.hpp>
 
+#include <QStringList>
+
 #include <set>
 
 #include "command.h"
 #include "createReceiverCommand.h"
 #include "currentFixCommand.h"
+#include "getEnabledConstellationsCommand.h"
 #include "getPositionCommand.h"
 #include "getTimeCommand.h"
 #include "receiver_enums.h"
@@ -39,8 +42,9 @@ QWidget* UbloxReceiverPlugin::createUI()
   });
 
   connect(m_view, &UbloxReceiverView::updateConstellationsInBackend, [this](std::set<Constellation> constellations) {
-    // TODO: update constellations in backend then return result of getsattelites command
-    m_view->updateConstellationsInView(constellations);
+    // TODO: update constellations in backend
+    // TODO: do this in a thread? or call the get in one of the other threads??
+    m_getConstellations();
   });
 
   boost::thread statusThread([this]() {
@@ -81,8 +85,8 @@ void UbloxReceiverPlugin::m_connectReceiver(int baudRate)
     CreateUbloxReceiverCommand command(baudRate, m_ubloxReceiver);
     command.execute();
   }
-  // TODO: call getsattelites command and then m_view->updateConstellationsInView
   m_ubloxMutex.unlock();
+  m_getConstellations();
 }
 
 void UbloxReceiverPlugin::m_disconnectReceiver()
@@ -119,5 +123,44 @@ void UbloxReceiverPlugin::m_updateData()
     m_view->displayPositionAndTime(position, time);
   }
 
+  m_ubloxMutex.unlock();
+}
+
+void UbloxReceiverPlugin::m_getConstellations()
+{
+  m_ubloxMutex.lock();
+  GetEnabledConstellationsCommand command(m_ubloxReceiver);
+  std::set<Constellation> constellations = command.execute();
+  QStringList constellationStrings;
+  for (Constellation constellation : constellations)
+  {
+    switch (constellation)
+    {
+      case Constellation::GPS:
+        constellationStrings.append("GPS");
+        break;
+      case Constellation::GLONASS:
+        constellationStrings.append("GLONASS");
+        break;
+      case Constellation::GALILEO:
+        constellationStrings.append("GALELIO");
+        break;
+      case Constellation::BEIDOU:
+        constellationStrings.append("BEIDOU");
+        break;
+      case Constellation::SBAS:
+        constellationStrings.append("SBAS");
+        break;
+      case Constellation::IMES:
+        constellationStrings.append("IMES");
+        break;
+      case Constellation::QZSS:
+        constellationStrings.append("QZSS");
+        break;
+      default:
+        break;
+    }
+  }
+  m_view->updateConstellationsInView(constellationStrings);
   m_ubloxMutex.unlock();
 }

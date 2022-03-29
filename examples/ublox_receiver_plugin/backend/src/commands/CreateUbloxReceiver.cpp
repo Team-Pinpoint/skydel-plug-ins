@@ -5,7 +5,7 @@
 
 CreateUbloxReceiverCommand::~CreateUbloxReceiverCommand(){}
 ublox::Ublox* CreateUbloxReceiverCommand::execute(){
-    std::string port = "/dev/tty.usbmodem101";
+    std::string port = "";
     for (auto & p : serial::list_ports()) {
         // check if vendor id is ublox (1546) and product id is a receiver (begins with 01a)
         // TODO: should we only support the newest ublox receiver (which we have) ... 01a8

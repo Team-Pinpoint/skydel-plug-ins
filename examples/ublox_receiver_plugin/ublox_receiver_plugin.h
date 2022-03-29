@@ -37,6 +37,7 @@ private:
   void m_disconnectReceiver();
   void m_startReceiver(ReceiverStartType startType);
   void m_updateData();
+  void m_getConstellations();
 };
 
 // Required boilerplate

@@ -50,9 +50,9 @@ void ConstellationSelectionPopupView::m_submitConstellationsClicked()
   {
     constellations.insert(Constellation::QZSS);
   }
-  if (m_ui->navicCheckBox->isChecked())
+  if (m_ui->imesCheckBox->isChecked())
   {
-    constellations.insert(Constellation::NAVIC);
+    constellations.insert(Constellation::IMES);
   }
 
   emit updateConstellations(constellations);

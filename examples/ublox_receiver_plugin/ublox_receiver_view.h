@@ -1,6 +1,7 @@
 #ifndef UBLOXRECEIVERVIEW_H
 #define UBLOXRECEIVERVIEW_H
 
+#include <QStringList>
 #include <QWidget>
 
 #include <set>
@@ -22,7 +23,7 @@ public:
   ~UbloxReceiverView();
   void setReceiverStatus(ReceiverStatus status);
   void displayPositionAndTime(char* position, char* time);
-  void updateConstellationsInView(std::set<Constellation> constellations);
+  void updateConstellationsInView(QStringList constellationStrings);
 
 signals:
   void connectReceiver(int baudRate);

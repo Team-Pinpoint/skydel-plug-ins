@@ -104,40 +104,10 @@ void UbloxReceiverView::displayPositionAndTime(char* position, char* time)
   m_ui->dataListWidget->addItem(time);
 }
 
-// TODO: use strings instead of enums??
-void UbloxReceiverView::updateConstellationsInView(std::set<Constellation> constellations)
+void UbloxReceiverView::updateConstellationsInView(QStringList constellationStrings)
 {
   m_ui->constellationListWidget->clear();
-  QStringList constellationStrings = {};
-  if (constellations.find(Constellation::GPS) != constellations.end())
-  {
-    constellationStrings.append("GPS");
-  }
-  if (constellations.find(Constellation::GLONASS) != constellations.end())
-  {
-    constellationStrings.append("GLONASS");
-  }
-  if (constellations.find(Constellation::GALILEO) != constellations.end())
-  {
-    constellationStrings.append("GALILEO");
-  }
-  if (constellations.find(Constellation::BEIDOU) != constellations.end())
-  {
-    constellationStrings.append("BEIDOU");
-  }
-  if (constellations.find(Constellation::SBAS) != constellations.end())
-  {
-    constellationStrings.append("SBAS");
-  }
-  if (constellations.find(Constellation::QZSS) != constellations.end())
-  {
-    constellationStrings.append("QZSS");
-  }
-  if (constellations.find(Constellation::NAVIC) != constellations.end())
-  {
-    constellationStrings.append("NAVIC");
-  }
-  m_ui->constellationListWidget->addItems(constellationStrings);
+  m_ui->constellationListWidget->addItems(QStringList(constellationStrings));
 }
 
 void UbloxReceiverView::m_startTypeIndexChanged(int index)

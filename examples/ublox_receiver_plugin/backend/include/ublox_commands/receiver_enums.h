@@ -22,14 +22,13 @@ enum class ReceiverStatus
 
 enum class Constellation
 {
-  GPS,
-  SBAS,
-  GALILEO,
-  BEIDOU,
-  IMES,
-  QZSS,
-  GLONASS,
-  NAVIC
+  GPS = 0,
+  SBAS = 1,
+  GALILEO = 2,
+  BEIDOU = 3,
+  IMES = 4,
+  QZSS = 5,
+  GLONASS = 6
 };
 
 #endif
