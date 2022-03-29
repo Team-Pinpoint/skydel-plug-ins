@@ -39,6 +39,7 @@ class GetEnabledSatellitesCommand: public Command{
                             constellation = GetEnabledSatellitesCommand::Constellations::GLONASS;
                             break;
                     }
+                    std::cout<<Bs<<std::endl;
                     if(Bs[0] == 1){
                         GetEnabledSatellitesCommand::enabled_constellations[enabled_satellite] = constellation;
                         enabled_satellite += 1;
