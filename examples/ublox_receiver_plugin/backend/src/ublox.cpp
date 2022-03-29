@@ -1116,21 +1116,21 @@ void Ublox::BufferIncomingData(uint8_t *msg, size_t length) {
 
 					if (msg[i + 1] == MSG_ID_ACK_ACK) // ACK Message
 							{
-						//std::cout << "Receiver Acknowledged Message " << std::endl;
-						//printf("0x%.2X ", (unsigned)class_id);
-						//std::cout << " ";
-						//printf("0x%.2X ", (unsigned)msg_id);
-						//std::cout << endl;
+						// std::cout << "Receiver Acknowledged Message " << std::endl;
+						// printf("0x%.2X ", (unsigned)class_id);
+						// std::cout << " ";
+						// printf("0x%.2X ", (unsigned)msg_id);
+						// std::cout << endl;
 
 					}
 
 					else if (msg[i + 1] == MSG_ID_ACK_NAK)    // NAK Message
 							{
-						//std::cout << "Receiver Did Not Acknowledged Message " << std::endl;
-						//printf("0x%.2X ", (unsigned)class_id);
-						//std::cout << " ";
-						//printf("0x%.2X ", (unsigned)msg_id);
-						//std::cout << endl;
+						// std::cout << "Receiver Did Not Acknowledged Message " << std::endl;
+						// printf("0x%.2X ", (unsigned)class_id);
+						// std::cout << " ";
+						// printf("0x%.2X ", (unsigned)msg_id);
+						// std::cout << endl;
 					}
 
 					buffer_index_ = 0;
