@@ -129,6 +129,7 @@ void UbloxReceiverView::m_connectReceiverClicked()
   {
     int baudRate = m_ui->baudRateSelect->currentText().toInt();
     emit connectReceiver(baudRate);
+    m_ui->dataListWidget->clear();
   }
   else
   {

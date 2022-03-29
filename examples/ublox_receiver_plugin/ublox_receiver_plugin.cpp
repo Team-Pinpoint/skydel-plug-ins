@@ -42,8 +42,9 @@ QWidget* UbloxReceiverPlugin::createUI()
   });
 
   connect(m_view, &UbloxReceiverView::updateConstellationsInBackend, [this](std::set<Constellation> constellations) {
+    // TODO: do this in a thread that dies when its complete
     // TODO: update constellations in backend
-    // TODO: do this in a thread? or call the get in one of the other threads??
+    // TODO: wait ~5sec
     m_getConstellations();
   });
 
