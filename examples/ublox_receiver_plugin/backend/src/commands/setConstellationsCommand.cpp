@@ -31,10 +31,17 @@ bool SetConstellationsCommand::execute(SetConstellationsCommand::Constellations 
             }
         }
     }
-    for(int i = 0; i < 6; i++){
-        cout << enableConstellations[i] << endl;
+    SetConstellationsCommand::cur_config.header.sync1 = UBX_SYNC_BYTE_1;
+    SetConstellationsCommand::cur_config.header.sync2 = UBX_SYNC_BYTE_2;
+    SetConstellationsCommand::cur_config.header.message_class = MSG_CLASS_CFG;
+    SetConstellationsCommand::cur_config.header.message_id = MSG_ID_CFG_GNSS;
+    SetConstellationsCommand::cur_config.header.payload_length = (4 + (8 * num_configs));
+    unsigned char* msg_ptr = (unsigned char*) &SetConstellationsCommand::cur_config;
+    bool sent = (receiver -> SendMessage)(msg_ptr,(4 + (8 * num_configs)));
+    int x = 0;
+    while(x < 10000){
+        usleep(5000);
+        x++;
     }
-    // unsigned char* msg_ptr = (unsigned char*) &SetConstellationsCommand::cur_config;
-    // bool sent = (receiver -> SendMessage)(msg_ptr,sizeof(msg_ptr));
-    return true;
+    return sent;
 };

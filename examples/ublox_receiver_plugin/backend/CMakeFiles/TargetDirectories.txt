@@ -1,0 +1,7 @@
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/ublox_receiver_plugin.dir
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/edit_cache.dir
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/rebuild_cache.dir
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/list_install_components.dir
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/install.dir
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/install/local.dir
+/Users/taylorgrant/RIT_Assignments/SeniorProject/skydel-plug-ins/examples/ublox_receiver_plugin/backend/CMakeFiles/install/strip.dir
