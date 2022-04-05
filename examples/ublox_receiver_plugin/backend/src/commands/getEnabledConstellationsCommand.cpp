@@ -4,10 +4,10 @@
 #include <set>
 
 bool GetEnabledConstellationsCommand::pulled = false;
-std::set<Constellation> GetEnabledConstellationsCommand::enabled_constellations = {};
+std::set<Constellation> GetEnabledConstellationsCommand::enabled_constellations;
 std::set<Constellation> GetEnabledConstellationsCommand::execute(){
     GetEnabledConstellationsCommand::pulled = false;
-    GetEnabledConstellationsCommand::enabled_constellations = {};
+    GetEnabledConstellationsCommand::enabled_constellations.clear();
     (receiver -> set_configure_gnss_callback)(GetEnabledSatellitesCallback);
     (receiver -> PollMessage(0x06,0x3E));
     while(! GetEnabledConstellationsCommand::pulled){

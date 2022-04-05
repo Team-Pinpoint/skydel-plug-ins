@@ -18,6 +18,8 @@ bool SetConstellationsCommand::execute(SetConstellationsCommand::Constellations 
     for(int i = 0; i < num_configs; i++){
         ublox::CfgGNSSBlock block = SetConstellationsCommand::cur_config.gnss_blocks[i];
         bitset<32> Bs = bitset<32>(block.flags);
+        std::cout << block.resTrkCh << std::endl;
+        std::cout << block.maxTrkCh << std::endl;
         if(Bs[0] != 1){
             if(count(enableConstellations,enableConstellations+n,block.gnssId) > 0){
                 Bs.flip(0);

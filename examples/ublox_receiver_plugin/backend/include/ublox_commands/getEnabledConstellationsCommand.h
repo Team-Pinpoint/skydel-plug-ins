@@ -8,6 +8,7 @@ class GetEnabledConstellationsCommand: public Command{
     public:
         GetEnabledConstellationsCommand(ublox::Ublox *recv = 0): Command(recv){};
         ~GetEnabledConstellationsCommand(){};
+        enum Constellations { GPS, SBAS, GALILEO, BELIDOU, IMES, QZSS, GLONASS, NONE};
         std::set<Constellation> execute();
         static void GetEnabledSatellitesCallback(ublox::CfgGNSS gnss_config, double time_stamp){
             try{
