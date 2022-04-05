@@ -16,6 +16,12 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="3" column="0">
     <widget class="QCheckBox" name="beidouCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>BEIDOU</string>
      </property>
@@ -23,6 +29,12 @@
    </item>
    <item row="6" column="0">
     <widget class="QCheckBox" name="imesCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>IMES</string>
      </property>
@@ -30,6 +42,12 @@
    </item>
    <item row="4" column="0">
     <widget class="QCheckBox" name="sbasCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>SBAS</string>
      </property>
@@ -37,6 +55,12 @@
    </item>
    <item row="0" column="0">
     <widget class="QCheckBox" name="gpsCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>GPS</string>
      </property>
@@ -44,6 +68,12 @@
    </item>
    <item row="5" column="0">
     <widget class="QCheckBox" name="qzssCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>QZSS</string>
      </property>
@@ -51,6 +81,12 @@
    </item>
    <item row="1" column="0">
     <widget class="QCheckBox" name="glonassCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>GLONASS</string>
      </property>
@@ -58,6 +94,12 @@
    </item>
    <item row="2" column="0">
     <widget class="QCheckBox" name="galileoCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>GALILEO</string>
      </property>
@@ -65,6 +107,12 @@
    </item>
    <item row="7" column="0">
     <widget class="QPushButton" name="submitConstellationsButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Submit</string>
      </property>

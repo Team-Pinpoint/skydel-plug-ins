@@ -12,6 +12,8 @@ ConstellationSelectionPopupView::ConstellationSelectionPopupView(QWidget* parent
 
   m_ui->setupUi(this);
 
+  setWindowTitle("Set Constellations");
+
   connect(m_ui->submitConstellationsButton,
           &QPushButton::clicked,
           this,
