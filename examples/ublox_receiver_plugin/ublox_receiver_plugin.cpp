@@ -50,12 +50,7 @@ QWidget* UbloxReceiverPlugin::createUI()
     m_startReceiver(startType);
   });
 
-  connect(m_view, &UbloxReceiverView::updateConstellationsInBackend, [this](std::set<Constellation> constellations) {
-    // TODO: do this in a thread that dies when its complete
-    // TODO: update constellations in backend
-    // TODO: wait ~5sec
-    m_getConstellations();
-  });
+  connect(m_view, &UbloxReceiverView::updateConstellations, this, &UbloxReceiverPlugin::m_getConstellations);
 
   m_threadGroup = new boost::thread_group();
 
@@ -169,6 +164,6 @@ void UbloxReceiverPlugin::m_getConstellations()
         break;
     }
   }
-  m_view->updateConstellationsInView(constellationStrings);
+  m_view->setConstellations(constellationStrings);
   m_ubloxMutex.unlock();
 }

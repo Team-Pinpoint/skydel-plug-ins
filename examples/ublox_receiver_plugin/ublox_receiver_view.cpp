@@ -15,8 +15,6 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
 {
   m_ui->setupUi(this);
 
-  m_constellationSelectionPopupView = new ConstellationSelectionPopupView();
-
   setReceiverStatus(ReceiverStatus::NOT_CONNECTED);
 
   connect(m_ui->startButton, &QPushButton::clicked, [this] { emit startClicked(m_selectedStartType); });
@@ -28,15 +26,7 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
 
   connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::m_connectReceiverClicked);
 
-  connect(m_ui->updateConstellationsButton,
-          &QPushButton::clicked,
-          m_constellationSelectionPopupView,
-          &ConstellationSelectionPopupView::show);
-
-  connect(m_constellationSelectionPopupView,
-          &ConstellationSelectionPopupView::updateConstellations,
-          this,
-          &UbloxReceiverView::updateConstellationsInBackend);
+  connect(m_ui->updateConstellationsButton, &QPushButton::clicked, this, &UbloxReceiverView::updateConstellations);
 }
 
 UbloxReceiverView::~UbloxReceiverView()
@@ -60,7 +50,6 @@ void UbloxReceiverView::setReceiverStatus(ReceiverStatus status)
     m_ui->receiverStatusLabel->setText("[Not Connected]");
     m_ui->startButton->setEnabled(false);
     m_ui->updateConstellationsButton->setEnabled(false);
-    m_constellationSelectionPopupView->hide();
     return;
   }
 
@@ -104,7 +93,7 @@ void UbloxReceiverView::displayPositionAndTime(char* position, char* time)
   m_ui->dataListWidget->addItem(time);
 }
 
-void UbloxReceiverView::updateConstellationsInView(QStringList constellationStrings)
+void UbloxReceiverView::setConstellations(QStringList constellationStrings)
 {
   m_ui->constellationListWidget->clear();
   m_ui->constellationListWidget->addItems(QStringList(constellationStrings));
@@ -133,7 +122,7 @@ void UbloxReceiverView::m_connectReceiverClicked()
   }
   else
   {
-    updateConstellationsInView({});
+    setConstellations({});
     emit disconnectReceiver();
   }
 }
