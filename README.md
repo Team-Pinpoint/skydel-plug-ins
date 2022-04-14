@@ -1,29 +1,40 @@
-[![Ubuntu CMake Build](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/ubuntu_cmake_build.yml/badge.svg)](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/ubuntu_cmake_build.yml)
-[![Windows CMake Build](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/windows_cmake_build.yml/badge.svg)](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/windows_cmake_build.yml)
-[![Ubuntu QMake Build](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/ubuntu_qmake_build.yml/badge.svg)](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/ubuntu_qmake_build.yml)
-[![Windows QMake Build](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/windows_qmake_build.yml/badge.svg)](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/windows_qmake_build.yml)
-[![Style Check](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/style_check.yml/badge.svg)](https://github.com/learn-orolia/skydel-plug-ins/actions/workflows/style_check.yml)
+[![Ubuntu CMake Build](https://github.com/Team-Pinpoint/skydel-plug-ins/actions/workflows/ubuntu_cmake_build.yml/badge.svg)](https://github.com/Team-Pinpoint/skydel-plug-ins/actions/workflows/ubuntu_cmake_build.yml)
+[![Ubuntu QMake Build](https://github.com/Team-Pinpoint/skydel-plug-ins/actions/workflows/ubuntu_qmake_build.yml/badge.svg)](https://github.com/Team-Pinpoint/skydel-plug-ins/actions/workflows/ubuntu_qmake_build.yml)
+[![Style Check](https://github.com/Team-Pinpoint/skydel-plug-ins/actions/workflows/style_check.yml/badge.svg)](https://github.com/Team-Pinpoint/skydel-plug-ins/actions/workflows/style_check.yml)
 
-## Welcome to the Public Skydel Plug-ins Github Repository!
+## Welcome to Team PinPoint's UBlox Receiver Plugin!
 
-With plug-ins, users can develop features and integrate them to the Skydel user interface and the real-time simulation engine. In Skydel's context, a plug-in is a dynamic library (*.so* on Ubuntu and *.dll* on Windows).
+### Important Notes
+Due to additional build requirements, Team PinPoint's UBlox Receiver plugin only has support for Ubuntu 2020.
 
-This repository contains the Skydel Plug-ins Software Development Kit (SDK) and multiple plug-in examples.
+### Pre-compiled
+Check out our release links on the right for a pre-compiled binary.
 
-### Getting Started
+### Build Locally
+First, make sure you have your build environment set up properly: [Skydel's Plugin documentation](https://skydel.gitbook.io/skydel-plug-ins-documentation/)
 
-See [documentation](https://skydel.gitbook.io/skydel-plug-ins-documentation/) to have more details on how to get started.
+Next, `cd` to your project directory.
 
-## Contributing
+Install `uuid-dev` and `boost`
+```
+sudo apt install uuid-dev libboost-all-dev 
+```
 
-Would you like your plug-in to be part of the Skydel Plug-ins repository? You found an improvement on an existing plug-in example? We suggest forking our repository and when you're all set, open a pull request!
+Then, install `blaze`
+```
+git clone https://github.com/parsa/blaze
+cd blaze && mkdir build && cd build
+cmake -DBLAZE_BLAS_MODE=ON .. && sudo make install
+```
 
-## Reporting Issues
+Build your code
+```
+cd /path/to/skydel-plug-ins # REPLACE WITH YOUR PATH
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+```
 
-Having a good idea to improve the SDK or there is something bothering you? Open an issue [here](https://github.com/learn-orolia/skydel-plug-ins/issues/new/choose), the Skydel team will address you concerns!
+Finally, when moving your `.so`'s over from a build, make sure you move the `ublox-receiver.so`, too.
 
-## Featured Plug-ins
 
-Would you like your plug-in to be featured in this repository? Add your project to the list bellow and send us a pull request!
-
-- [IMU Plug-in](https://github.com/learn-orolia/skydel-plug-ins/tree/master/examples/imu_plugin): Simulates an inertial measurement unit with real-time position data from Skydel.
