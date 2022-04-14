@@ -24,6 +24,14 @@ void UbloxReceiverPlugin::setConfiguration(const QString& version, const QJsonOb
   emit configurationChanged();
 }
 
+UbloxReceiverPlugin::~UbloxReceiverPlugin()
+{
+  m_ubloxReceiver->Disconnect();
+  m_pluginExists = false;
+  m_threadGroup->~thread_group();
+  m_view->~UbloxReceiverView();
+}
+
 QJsonObject UbloxReceiverPlugin::getConfiguration() const
 {
   return {};
@@ -31,6 +39,7 @@ QJsonObject UbloxReceiverPlugin::getConfiguration() const
 
 QWidget* UbloxReceiverPlugin::createUI()
 {
+  m_pluginExists = true;
   m_view = new UbloxReceiverView;
 
   connect(m_view, &UbloxReceiverView::connectReceiver, [this](int baudRate) { m_connectReceiver(baudRate); });
@@ -48,8 +57,10 @@ QWidget* UbloxReceiverPlugin::createUI()
     m_getConstellations();
   });
 
-  boost::thread statusThread([this]() {
-    while (true)
+  m_threadGroup = new boost::thread_group();
+
+  m_threadGroup->create_thread([this]() {
+    while (m_pluginExists)
     {
       m_ubloxMutex.lock();
       ReceiverGetFixCommand command(m_ubloxReceiver);
@@ -58,16 +69,14 @@ QWidget* UbloxReceiverPlugin::createUI()
       usleep(1000000); // check the status every 1 second
     }
   });
-  statusThread.detach();
 
-  boost::thread dataThread([this]() {
-    while (true)
+  m_threadGroup->create_thread([this]() {
+    while (m_pluginExists)
     {
       m_updateData();
       usleep(3000000); // update the data every 3 seconds
     }
   });
-  dataThread.detach();
 
   return m_view;
 }
@@ -111,11 +120,9 @@ void UbloxReceiverPlugin::m_updateData()
 {
   m_ubloxMutex.lock();
 
-  m_skydelNotifier->notify("Retrieving Position from the Ublox receiver");
   GetPositionCommand positionCommand(m_ubloxReceiver);
   char* position = positionCommand.execute();
 
-  m_skydelNotifier->notify("Retrieving UTC Time from the Ublox receiver");
   GetUTCTimeCommand timeCommand(m_ubloxReceiver);
   char* time = timeCommand.execute();
 

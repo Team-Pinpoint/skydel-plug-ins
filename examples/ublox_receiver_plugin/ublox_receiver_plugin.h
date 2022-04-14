@@ -18,6 +18,7 @@ class UbloxReceiverPlugin : public QObject, public SkydelCoreInterface
 
 public:
   // SkydelCoreInterface
+  ~UbloxReceiverPlugin();
   inline void setLogPath(const QString&) override {}
   inline void setNotifier(SkydelNotifierInterface* notifier) override { m_skydelNotifier = notifier; }
   void setConfiguration(const QString& version, const QJsonObject& configuration) override;
@@ -32,7 +33,9 @@ private:
   SkydelNotifierInterface* m_skydelNotifier;
   UbloxReceiverView* m_view;
   Ublox* m_ubloxReceiver;
+  boost::thread_group* m_threadGroup;
   boost::mutex m_ubloxMutex;
+  bool m_pluginExists;
   void m_connectReceiver(int baudRate);
   void m_disconnectReceiver();
   void m_startReceiver(ReceiverStartType startType);
