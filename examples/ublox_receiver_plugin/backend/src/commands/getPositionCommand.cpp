@@ -12,7 +12,6 @@ char* GetPositionCommand::execute(){
         while(! GetPositionCommand::pulled){
             usleep(50);
         }
-        std::cout << GetPositionCommand::position_string << std::endl;
     }
     return GetPositionCommand::position_string;
 };
