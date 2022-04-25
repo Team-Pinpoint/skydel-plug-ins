@@ -34,7 +34,7 @@ private:
   Ui::UbloxReceiverView* m_ui;
   ReceiverStatus m_receiverStatus;
   ReceiverStartType m_selectedStartType;
-  void m_startTypeIndexChanged(int index);
-  void m_connectReceiverClicked();
+  void startTypeIndexChanged(int index);
+  void connectReceiverClicked();
 };
 #endif // UBLOXRECEIVERVIEW_H

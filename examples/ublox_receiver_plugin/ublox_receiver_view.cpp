@@ -22,9 +22,9 @@ UbloxReceiverView::UbloxReceiverView(QWidget* parent) :
   connect(m_ui->startTypeSelect,
           qOverload<int>(&QComboBox::currentIndexChanged),
           this,
-          &UbloxReceiverView::m_startTypeIndexChanged);
+          &UbloxReceiverView::startTypeIndexChanged);
 
-  connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::m_connectReceiverClicked);
+  connect(m_ui->connectReceiverButton, &QPushButton::clicked, this, &UbloxReceiverView::connectReceiverClicked);
 
   connect(m_ui->updateConstellationsButton, &QPushButton::clicked, this, &UbloxReceiverView::updateConstellations);
 }
@@ -99,7 +99,7 @@ void UbloxReceiverView::setConstellations(QStringList constellationStrings)
   m_ui->constellationListWidget->addItems(QStringList(constellationStrings));
 }
 
-void UbloxReceiverView::m_startTypeIndexChanged(int index)
+void UbloxReceiverView::startTypeIndexChanged(int index)
 {
   m_selectedStartType = (ReceiverStartType)index;
   if (index == 0)
@@ -112,7 +112,7 @@ void UbloxReceiverView::m_startTypeIndexChanged(int index)
   }
 }
 
-void UbloxReceiverView::m_connectReceiverClicked()
+void UbloxReceiverView::connectReceiverClicked()
 {
   if (m_receiverStatus == ReceiverStatus::NOT_CONNECTED)
   {

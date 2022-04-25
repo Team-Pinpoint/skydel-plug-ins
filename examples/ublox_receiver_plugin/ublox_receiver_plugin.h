@@ -36,11 +36,11 @@ private:
   boost::thread_group* m_threadGroup;
   boost::mutex m_ubloxMutex;
   bool m_pluginExists;
-  void m_connectReceiver(int baudRate);
-  void m_disconnectReceiver();
-  void m_startReceiver(ReceiverStartType startType);
-  void m_updateData();
-  void m_getConstellations();
+  void connectReceiver(int baudRate);
+  void disconnectReceiver();
+  void startReceiver(ReceiverStartType startType);
+  void updateData();
+  void getConstellations();
 };
 
 // Required boilerplate

@@ -42,15 +42,15 @@ QWidget* UbloxReceiverPlugin::createUI()
   m_pluginExists = true;
   m_view = new UbloxReceiverView;
 
-  connect(m_view, &UbloxReceiverView::connectReceiver, [this](int baudRate) { m_connectReceiver(baudRate); });
+  connect(m_view, &UbloxReceiverView::connectReceiver, [this](int baudRate) { connectReceiver(baudRate); });
 
-  connect(m_view, &UbloxReceiverView::disconnectReceiver, this, &UbloxReceiverPlugin::m_disconnectReceiver);
+  connect(m_view, &UbloxReceiverView::disconnectReceiver, this, &UbloxReceiverPlugin::disconnectReceiver);
 
   connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
-    m_startReceiver(startType);
+    startReceiver(startType);
   });
 
-  connect(m_view, &UbloxReceiverView::updateConstellations, this, &UbloxReceiverPlugin::m_getConstellations);
+  connect(m_view, &UbloxReceiverView::updateConstellations, this, &UbloxReceiverPlugin::getConstellations);
 
   m_threadGroup = new boost::thread_group();
 
@@ -68,7 +68,7 @@ QWidget* UbloxReceiverPlugin::createUI()
   m_threadGroup->create_thread([this]() {
     while (m_pluginExists)
     {
-      m_updateData();
+      updateData();
       usleep(3000000); // update the data every 3 seconds
     }
   });
@@ -76,7 +76,7 @@ QWidget* UbloxReceiverPlugin::createUI()
   return m_view;
 }
 
-void UbloxReceiverPlugin::m_connectReceiver(int baudRate)
+void UbloxReceiverPlugin::connectReceiver(int baudRate)
 {
   m_ubloxMutex.lock();
   m_skydelNotifier->notify("Connecting to the Ublox receiver");
@@ -91,10 +91,10 @@ void UbloxReceiverPlugin::m_connectReceiver(int baudRate)
     command.execute();
   }
   m_ubloxMutex.unlock();
-  m_getConstellations();
+  getConstellations();
 }
 
-void UbloxReceiverPlugin::m_disconnectReceiver()
+void UbloxReceiverPlugin::disconnectReceiver()
 {
   m_ubloxMutex.lock();
   m_skydelNotifier->notify("Disconnecting from the Ublox receiver");
@@ -102,7 +102,7 @@ void UbloxReceiverPlugin::m_disconnectReceiver()
   m_ubloxMutex.unlock();
 }
 
-void UbloxReceiverPlugin::m_startReceiver(ReceiverStartType startType)
+void UbloxReceiverPlugin::startReceiver(ReceiverStartType startType)
 {
   m_ubloxMutex.lock();
   m_skydelNotifier->notify("Starting the Ublox receiver");
@@ -111,7 +111,7 @@ void UbloxReceiverPlugin::m_startReceiver(ReceiverStartType startType)
   m_ubloxMutex.unlock();
 }
 
-void UbloxReceiverPlugin::m_updateData()
+void UbloxReceiverPlugin::updateData()
 {
   m_ubloxMutex.lock();
 
@@ -129,7 +129,7 @@ void UbloxReceiverPlugin::m_updateData()
   m_ubloxMutex.unlock();
 }
 
-void UbloxReceiverPlugin::m_getConstellations()
+void UbloxReceiverPlugin::getConstellations()
 {
   m_ubloxMutex.lock();
   GetEnabledConstellationsCommand command(m_ubloxReceiver);
