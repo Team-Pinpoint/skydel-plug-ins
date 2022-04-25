@@ -7,7 +7,7 @@ class CreateUbloxReceiverCommand: public Command{
         CreateUbloxReceiverCommand(int baud = 0, ublox::Ublox *recv = new ublox::Ublox()): Command(recv){
             baudrate = baud;
         };
-        ~CreateUbloxReceiverCommand(){};
+        ~CreateUbloxReceiverCommand();
         ublox::Ublox* execute();
     protected:
         int baudrate;
