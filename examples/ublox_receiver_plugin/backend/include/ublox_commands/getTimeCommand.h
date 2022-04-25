@@ -5,7 +5,7 @@
 class GetUTCTimeCommand: public Command{
     public:
         GetUTCTimeCommand(ublox::Ublox *recv = 0): Command(recv){};
-        ~GetUTCTimeCommand(){};
+        ~GetUTCTimeCommand() = default;
         static void UTCTimeCallback(ublox::NavUTCTime nav_utc_time, double time_stamp){
             try{
                 char buffer[30];
@@ -13,7 +13,7 @@ class GetUTCTimeCommand: public Command{
                 memcpy(GetUTCTimeCommand::time_string,buffer,20);
                 GetUTCTimeCommand::pulled_time = true;
             }
-            catch(std::exception &e){
+            catch(const std::exception &e){
                 std::cout << "PseudorangeData() error";
             }
         }

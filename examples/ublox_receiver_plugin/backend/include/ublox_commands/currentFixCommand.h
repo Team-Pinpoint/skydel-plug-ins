@@ -6,7 +6,7 @@
 class ReceiverGetFixCommand: public Command{
     public:
         ReceiverGetFixCommand(ublox::Ublox *recv = 0): Command(recv){};
-        ~ReceiverGetFixCommand(){};
+        ~ReceiverGetFixCommand() = default;
         static void NavigationStatusCallbackIsFixed(ublox::NavStatus &nav_status, double &time_stamp){
             try{
                 std::cout << "GPS Fix Type: "<< std::endl;
@@ -39,7 +39,7 @@ class ReceiverGetFixCommand: public Command{
                     ReceiverGetFixCommand::receiverStatus = ReceiverStatus::NO_FIX;
                     ReceiverGetFixCommand::receiverFix = true;
                 }
-            } catch (std::exception &e) {
+            } catch (const std::exception &e) {
                 std::cout << "PseudorangeData() error";
             }    
         }

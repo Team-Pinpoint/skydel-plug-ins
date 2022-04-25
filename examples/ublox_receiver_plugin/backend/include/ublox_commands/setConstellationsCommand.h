@@ -5,7 +5,7 @@
 class SetConstellationsCommand: public Command{
     public:
         SetConstellationsCommand(ublox::Ublox *recv = 0): Command(recv){};
-        ~SetConstellationsCommand(){};
+        ~SetConstellationsCommand() = default;
         enum Constellations { GPS, SBAS, GALILEO, BELIDOU, IMES, QZSS, GLONASS, NONE};
         bool execute(SetConstellationsCommand::Constellations *);
         static void GetCurrentConfigurationCallback(ublox::CfgGNSS gnss_config, double time_stamp){
@@ -48,7 +48,7 @@ class SetConstellationsCommand: public Command{
                 // }
                 SetConstellationsCommand::pulled = true;
             }
-            catch(std::exception &e){
+            catch(const std::exception &e){
                 std::cout << "PseudorangeData() error";
             }
         }

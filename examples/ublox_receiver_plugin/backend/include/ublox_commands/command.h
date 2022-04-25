@@ -7,7 +7,7 @@ class Command{
         Command(ublox::Ublox *recv = 0) {
             receiver = recv;
         }
-        ~Command(){};
+        ~Command() = default;
 
     protected:
         ublox::Ublox *receiver;

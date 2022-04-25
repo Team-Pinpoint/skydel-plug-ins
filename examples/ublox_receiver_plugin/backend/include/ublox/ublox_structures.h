@@ -288,7 +288,7 @@ PACK(
         uint8_t numTrkChHw;
         uint8_t numTrkChUse;
         uint8_t numConfigBlocks;
-        CfgGNSSBlock gnss_blocks[8]; //TODO confirm length
+        CfgGNSSBlock gnss_blocks[8];
     }
 );
 

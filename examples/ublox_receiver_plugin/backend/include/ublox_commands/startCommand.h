@@ -6,7 +6,7 @@
 class ReceiverStartCommand: public Command{
     public:
         ReceiverStartCommand(ublox::Ublox *recv = 0): Command(recv){};
-        ~ReceiverStartCommand(){};
+        ~ReceiverStartCommand() = default;
         void execute(ReceiverStartType startType);
     protected:
         static bool receiver_reset;
