@@ -6,7 +6,6 @@
 
 #include <set>
 
-#include "constellation_selection_popup_view.h"
 #include "receiver_enums.h"
 
 namespace Ui
@@ -23,20 +22,19 @@ public:
   ~UbloxReceiverView();
   void setReceiverStatus(ReceiverStatus status);
   void displayPositionAndTime(char* position, char* time);
-  void updateConstellationsInView(QStringList constellationStrings);
+  void setConstellations(QStringList constellationStrings);
 
 signals:
   void connectReceiver(int baudRate);
   void disconnectReceiver();
   void startClicked(ReceiverStartType startType);
-  void updateConstellationsInBackend(std::set<Constellation> constellations);
+  void updateConstellations();
 
 private:
   Ui::UbloxReceiverView* m_ui;
-  ConstellationSelectionPopupView* m_constellationSelectionPopupView;
   ReceiverStatus m_receiverStatus;
   ReceiverStartType m_selectedStartType;
-  void m_startTypeIndexChanged(int index);
-  void m_connectReceiverClicked();
+  void startTypeIndexChanged(int index);
+  void connectReceiverClicked();
 };
 #endif // UBLOXRECEIVERVIEW_H

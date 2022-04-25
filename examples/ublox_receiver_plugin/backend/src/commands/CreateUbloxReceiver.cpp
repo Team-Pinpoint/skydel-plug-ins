@@ -24,11 +24,11 @@ ublox::Ublox* CreateUbloxReceiverCommand::execute(){
     while(result == 0){
         result = receiver->Connect(port,baudrate);
         if (result) {
-            std::cout << "Successfully connected to ublox receiver at " << port << std::endl;
+            // std::cout << "Successfully connected to ublox receiver at " << port << std::endl;
             return receiver;
         }
-        else {
-            std::cout << "Failed to connect to ublox receiver at " << port << std::endl;
-        }
+        // else {
+        //     std::cout << "Failed to connect to ublox receiver at " << port << std::endl;
+        // }
     }
 }

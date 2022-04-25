@@ -12,7 +12,6 @@ char* GetUTCTimeCommand::execute(){
         while(! GetUTCTimeCommand::pulled_time){
             usleep(50);
         }
-        std::cout << GetUTCTimeCommand::time_string << std::endl;
     }
     return GetUTCTimeCommand::time_string;
 };
