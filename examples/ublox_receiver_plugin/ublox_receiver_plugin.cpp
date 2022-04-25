@@ -46,9 +46,7 @@ QWidget* UbloxReceiverPlugin::createUI()
 
   connect(m_view, &UbloxReceiverView::disconnectReceiver, this, &UbloxReceiverPlugin::disconnectReceiver);
 
-  connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) {
-    startReceiver(startType);
-  });
+  connect(m_view, &UbloxReceiverView::startClicked, [this](ReceiverStartType startType) { startReceiver(startType); });
 
   connect(m_view, &UbloxReceiverView::updateConstellations, this, &UbloxReceiverPlugin::getConstellations);
 
