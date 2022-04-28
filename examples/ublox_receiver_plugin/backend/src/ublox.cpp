@@ -190,6 +190,9 @@ inline void DefaultParsedEphemCallback(ublox::ParsedEphemData parsed_ephem_data,
     cout << std::endl;
 */
 }
+inline void DefaultCFGGNSSCallback(ublox::CfgGNSS gnss_config,double time_stamp){
+	std::cout << "GNSS CONFIG" << std::endl;
+}
 
 Ublox::Ublox() {
     serial_port_ = NULL;
@@ -220,6 +223,7 @@ Ublox::Ublox() {
     log_warning_ = DefaultWarningMsgCallback;
     log_error_ = DefaultErrorMsgCallback;
     parsed_ephem_callback_ = NULL;
+	cfg_gnss_callback_ = NULL;
     reading_acknowledgement_ = false;
     bytes_remaining_ = false;
     header_length_ = 0;
@@ -1111,22 +1115,11 @@ void Ublox::BufferIncomingData(uint8_t *msg, size_t length) {
 					// Add function which takes class_id and msg_id and returns name of corresponding message
 
 					if (msg[i + 1] == MSG_ID_ACK_ACK) // ACK Message
-							{
-						//std::cout << "Receiver Acknowledged Message " << std::endl;
-						//printf("0x%.2X ", (unsigned)class_id);
-						//std::cout << " ";
-						//printf("0x%.2X ", (unsigned)msg_id);
-						//std::cout << endl;
-
+					{
 					}
 
 					else if (msg[i + 1] == MSG_ID_ACK_NAK)    // NAK Message
-							{
-						//std::cout << "Receiver Did Not Acknowledged Message " << std::endl;
-						//printf("0x%.2X ", (unsigned)class_id);
-						//std::cout << " ";
-						//printf("0x%.2X ", (unsigned)msg_id);
-						//std::cout << endl;
+					{
 					}
 
 					buffer_index_ = 0;
@@ -1186,7 +1179,6 @@ void Ublox::ParseLog(uint8_t *log, size_t logID) {
 		uint16_t payload_length;
 		uint8_t num_of_svs;
 		uint8_t num_of_channels;
-
 		switch (logID) {
 
 		case AID_REQ: // Receiver outputs if accurate internally stored pos and time aren't available
@@ -1210,7 +1202,14 @@ void Ublox::ParseLog(uint8_t *log, size_t logID) {
 			if (configure_navigation_parameters_callback_)
 				configure_navigation_parameters_callback_(cur_nav5_settings, read_timestamp_);
 			break;
-
+		case CFG_GNSS:
+			ublox::CfgGNSS cur_gnss_settings;
+			payload_length = (((uint16_t) *(log+5)) << 8) + ((uint16_t) *(log+4));
+			memcpy(&cur_gnss_settings, log, payload_length+HDR_CHKSM_LENGTH);
+			if (cfg_gnss_callback_){
+				cfg_gnss_callback_(cur_gnss_settings, read_timestamp_);
+			}
+			break;
 		case NAV_STATUS:
             ublox::NavStatus cur_nav_status;
 			payload_length = (((uint16_t) *(log+5)) << 8) + ((uint16_t) *(log+4));

@@ -1,7 +1,10 @@
 #ifndef UBLOXRECEIVERVIEW_H
 #define UBLOXRECEIVERVIEW_H
 
+#include <QStringList>
 #include <QWidget>
+
+#include <set>
 
 #include "receiver_enums.h"
 
@@ -18,17 +21,20 @@ public:
   UbloxReceiverView(QWidget* parent = nullptr);
   ~UbloxReceiverView();
   void setReceiverStatus(ReceiverStatus status);
+  void displayPositionAndTime(char* position, char* time);
+  void setConstellations(QStringList constellationStrings);
 
 signals:
   void connectReceiver(int baudRate);
   void disconnectReceiver();
   void startClicked(ReceiverStartType startType);
+  void updateConstellations();
 
 private:
   Ui::UbloxReceiverView* m_ui;
   ReceiverStatus m_receiverStatus;
   ReceiverStartType m_selectedStartType;
-  void m_startTypeIndexChanged(int index);
-  void m_connectReceiverClicked();
+  void startTypeIndexChanged(int index);
+  void connectReceiverClicked();
 };
 #endif // UBLOXRECEIVERVIEW_H

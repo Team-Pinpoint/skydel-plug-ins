@@ -20,4 +20,15 @@ enum class ReceiverStatus
   TIME_ONLY
 };
 
+enum class Constellation
+{
+  GPS = 0,
+  SBAS = 1,
+  GALILEO = 2,
+  BEIDOU = 3,
+  IMES = 4,
+  QZSS = 5,
+  GLONASS = 6
+};
+
 #endif
